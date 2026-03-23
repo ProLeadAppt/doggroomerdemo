@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { PawPrint } from "lucide-react";
 import { Button } from "../ui/Button";
 import { MagneticButton } from "../motion/MagneticButton";
@@ -11,6 +11,10 @@ import { navLinks } from "../../data/site";
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  // Scroll progress indicator
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40);
@@ -84,6 +88,11 @@ export function SiteHeader() {
             />
           </button>
         </div>
+        {/* Scroll progress indicator */}
+        <motion.div
+          className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-pw-sage via-pw-teal to-pw-terracotta origin-left"
+          style={{ scaleX, opacity: scrolled ? 1 : 0 }}
+        />
       </motion.header>
 
       {/* Mobile menu overlay */}

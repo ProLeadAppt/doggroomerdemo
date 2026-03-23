@@ -171,3 +171,51 @@ body {
   outline: 2px solid #c4704b;
   outline-offset: 4px;
 }
+
+/* ─── Gradient text utility ─── */
+.text-gradient-sage {
+  background: linear-gradient(135deg, #6b9360 0%, #1b6b6d 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-warm {
+  background: linear-gradient(135deg, #c4704b 0%, #d4a03c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ─── Image skeleton loading ─── */
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.7; }
+}
+
+.skeleton-loading {
+  background: linear-gradient(90deg, #e8e0d4 25%, #f5ebd8 50%, #e8e0d4 75%);
+  background-size: 200% 100%;
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+/* ─── Animated paw stripe gradient ─── */
+@keyframes stripe-shift {
+  0% { background-position: 0 0; }
+  100% { background-position: 48px 0; }
+}
+
+.paw-stripe-animated {
+  background: repeating-linear-gradient(
+    135deg,
+    #6b9360 0px,
+    #6b9360 4px,
+    transparent 4px,
+    transparent 12px,
+    #1b6b6d 12px,
+    #1b6b6d 16px,
+    transparent 16px,
+    transparent 24px
+  );
+  animation: stripe-shift 3s linear infinite;
+}

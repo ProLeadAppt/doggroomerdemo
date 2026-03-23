@@ -43,8 +43,11 @@ function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: str
 export function TrustBar() {
   return (
     <div className="bg-pw-elevated">
-      {/* Marquee strip */}
-      <div className="overflow-hidden border-b border-pw-border py-4">
+      {/* Marquee strip with fade-edge masks */}
+      <div className="overflow-hidden border-b border-pw-border py-4 relative">
+        {/* Fade edges */}
+        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-pw-elevated to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-pw-elevated to-transparent z-10 pointer-events-none" />
         <div className="flex animate-marquee-slow">
           {[...stats.credibilityPoints, ...stats.credibilityPoints].map(
             (point, i) => (

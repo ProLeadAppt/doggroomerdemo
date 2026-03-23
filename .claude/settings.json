@@ -4,7 +4,37 @@
       "Read(//d/Dev/**)",
       "Bash(find C:Usersdomin.claude -type f -name *.md)",
       "Read(//c/Users/domin/.claude/plugins/cache/claude-plugins-official/superpowers/**)",
-      "Bash(find d:/Dev -path */.agents/skills/*.md -type f)"
+      "Bash(find d:/Dev -path */.agents/skills/*.md -type f)",
+      "Read(//c/Users/domin/.claude/**)",
+      "Bash(find d:/Dev -maxdepth 2 -name *.md -type f)",
+      "Bash(find d:/Dev -maxdepth 3 -name *.config.ts -o -name *.config.js)",
+      "Bash(find d:/Dev -maxdepth 3 -name *DESIGN* -o -name *STYLE* -o -name *BRAND*)",
+      "Bash(find 'd:/Dev/Dog Grooming Demo' -type f \\\\\\(-name *.tsx -o -name *.ts -o -name *.jsx \\\\\\))",
+      "Bash(find d:/Dev/PropCompass/components -type f -name *.tsx)",
+      "Bash(find 'd:/Dev/Aussie Loan Office/components' -type f -name *.tsx)",
+      "Bash(find 'd:/Dev/D C Willans Artwork/components' -type f -name *.tsx)",
+      "Bash(find 'd:/Dev/Hair Pinns/HairPinns/src' -type f -name *.tsx)",
+      "Bash(find 'd:/Dev/Gentle Care Nursing/components' -type f -name *.tsx)",
+      "Bash(find /d/Dev -type f -path */.agents/skills/ui-ux-pro-max/SKILL.md)",
+      "Bash(find /d/Dev -type f -path */.agents/skills/bencium*/SKILL.md)",
+      "Bash(find 'd:/Dev/Gentle Care Nursing' -type f -name *.tsx)",
+      "Bash(find /d/Dev -type d -path */.agents/skills/bencium*)",
+      "Bash(find /d/Dev -type d -path */.agents/skills/anth*)",
+      "Bash(xargs grep:*)",
+      "Bash(ls -d */)",
+      "Read(//tmp/**)",
+      "Bash(find d:/Dev/himal-cobarbershop/components -type f \\\\\\(-name *.tsx -o -name *.ts \\\\\\))",
+      "Bash(grep -E \"^d|\\\\.json$|\\\\.tsx$|\\\\.ts$\")",
+      "Bash(find d:/Dev/himal-cobarbershop/data -type f -name *.ts -o -name *.js)",
+      "Bash(find d:/Dev/himal-cobarbershop -not -path *node_modules* -not -path *.next* -not -path */.agents/* -type d)",
+      "Bash(find d:/Dev/himal-cobarbershop -type f \\\\\\(-name *.tsx -o -name *.ts -o -name *.json -o -name *.js -o -name *.mjs -o -name *.css \\\\\\) -not -path *node_modules* -not -path *.next* -not -path */.agent* -not -path */.agents*)",
+      "Bash(npm install:*)",
+      "Bash(npx next:*)",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(find '/d/Dev/D C Willans Artwork' -type f -name *BeforeAfter* -o -name *Slider*)"
+    ],
+    "additionalDirectories": [
+      "d:\\Dev\\Dog Grooming Demo\\app\\blog"
     ]
   }
 }
