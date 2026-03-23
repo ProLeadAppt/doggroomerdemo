@@ -4,7 +4,7 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { BookingPageContent } from "@/components/pages/BookingPageContent";
 
 export const metadata: Metadata = {
-  title: "Book a Groom | Pawsome & Co.",
+  title: "Book a Groom",
   description:
     "Book your dog's next grooming appointment online. Select a service, pick a time, and we'll take care of the rest.",
 };

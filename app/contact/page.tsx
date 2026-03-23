@@ -4,7 +4,7 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { ContactPageContent } from "@/components/pages/ContactPageContent";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Pawsome & Co.",
+  title: "Contact Us",
   description:
     "Get in touch with Pawsome & Co. Visit us at 12 Darling Street, Balmain NSW 2041. Call (02) 8912 3456 or send us a message.",
 };

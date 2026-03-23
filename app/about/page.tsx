@@ -4,7 +4,7 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { AboutPageContent } from "@/components/pages/AboutPageContent";
 
 export const metadata: Metadata = {
-  title: "About Us | Pawsome & Co.",
+  title: "About Us",
   description:
     "Meet the team behind Balmain's favourite dog grooming studio. Founded in 2019 by Sophie Chen, Pawsome & Co. treats every dog like family.",
 };

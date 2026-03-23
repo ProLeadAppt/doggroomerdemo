@@ -4,7 +4,7 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { BlogListContent } from "@/components/pages/BlogListContent";
 
 export const metadata: Metadata = {
-  title: "Blog | Pawsome & Co.",
+  title: "Blog",
   description:
     "Grooming tips, breed guides, and expert advice from Balmain's favourite dog groomers.",
 };

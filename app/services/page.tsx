@@ -4,7 +4,7 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { ServicesPageContent } from "@/components/pages/ServicesPageContent";
 
 export const metadata: Metadata = {
-  title: "Services & Pricing | Pawsome & Co.",
+  title: "Services & Pricing",
   description:
     "Full grooming menu with pricing for all breeds. Bath & Tidy, Full Grooms, Puppy's First Groom, The Works, and VIP Monthly Membership.",
 };

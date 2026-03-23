@@ -1,0 +1,21 @@
+{
+  "name": "Pawsome & Co. | Premium Dog Grooming",
+  "short_name": "Pawsome & Co.",
+  "description": "Where every dog leaves happy. Premium grooming in Balmain.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fdf6ec",
+  "theme_color": "#1b6b6d",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

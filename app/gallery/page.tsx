@@ -4,7 +4,7 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { GalleryPageContent } from "@/components/pages/GalleryPageContent";
 
 export const metadata: Metadata = {
-  title: "Gallery | Pawsome & Co.",
+  title: "Gallery",
   description:
     "See the Pawsome difference. Before & after transformations, breed-specific grooms, and happy pups from our Balmain studio.",
 };
