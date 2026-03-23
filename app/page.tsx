@@ -1,5 +1,7 @@
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
+import { SchemaScript } from "@/components/seo/SchemaScript";
+import { getLocalBusinessSchema, getFAQSchema } from "@/lib/schema";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { QuickInfoStrip } from "@/components/sections/QuickInfoStrip";
 import { TrustBar } from "@/components/sections/TrustBar";
@@ -15,6 +17,8 @@ import { ScrollVelocity } from "@/components/motion/ScrollVelocity";
 export default function HomePage() {
   return (
     <div className="flex min-h-screen flex-col bg-pw-cream text-pw-charcoal">
+      <SchemaScript schema={getLocalBusinessSchema()} />
+      <SchemaScript schema={getFAQSchema()} />
       <SiteHeader />
       <main className="flex-1">
         <HeroSection />
