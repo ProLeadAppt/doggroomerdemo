@@ -1,0 +1,18 @@
+# Environment and secrets
+.env
+credentials.json
+token.json
+
+# Temporary files
+.tmp/
+
+# Dependencies
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc

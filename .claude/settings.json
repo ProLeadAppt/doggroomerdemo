@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//d/Dev/**)",
+      "Bash(find C:Usersdomin.claude -type f -name *.md)",
+      "Read(//c/Users/domin/.claude/plugins/cache/claude-plugins-official/superpowers/**)",
+      "Bash(find d:/Dev -path */.agents/skills/*.md -type f)"
+    ]
+  }
+}
