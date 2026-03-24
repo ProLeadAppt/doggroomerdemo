@@ -287,6 +287,9 @@ export const galleryItems: GalleryItem[] = [
     image:
       "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&q=80",
     category: "Small Dogs",
+    dogName: "Luna",
+    breed: "Cavoodle",
+    ownerQuote: "She came home looking like a completely different dog!",
   },
   {
     id: "gallery-2",
@@ -296,6 +299,9 @@ export const galleryItems: GalleryItem[] = [
     image:
       "https://images.unsplash.com/photo-1552053831-71594a27632d?w=600&q=80",
     category: "Large Dogs",
+    dogName: "Charlie",
+    breed: "Golden Retriever",
+    ownerQuote: "The de-shedding treatment is a game changer for our house.",
   },
   {
     id: "gallery-3",
@@ -305,6 +311,9 @@ export const galleryItems: GalleryItem[] = [
     image:
       "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=600&q=80",
     category: "Small Dogs",
+    dogName: "Hugo",
+    breed: "French Bulldog",
+    ownerQuote: "Hugo always comes back clean, happy, and smelling amazing.",
   },
   {
     id: "gallery-4",
@@ -314,6 +323,9 @@ export const galleryItems: GalleryItem[] = [
     image:
       "https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?w=600&q=80",
     category: "Medium Dogs",
+    dogName: "Coco",
+    breed: "Spoodle",
+    ownerQuote: "Coco has never looked or felt better. Absolute professionals.",
   },
   {
     id: "gallery-5",
@@ -323,6 +335,9 @@ export const galleryItems: GalleryItem[] = [
     image:
       "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=600&q=80",
     category: "Small Dogs",
+    dogName: "Biscuit",
+    breed: "Mixed Breed",
+    ownerQuote: "So much patience and treats — he loved his first visit!",
   },
   {
     id: "gallery-6",

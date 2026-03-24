@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 import { Section } from "../layout/Section";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Button } from "../ui/Button";
@@ -19,6 +20,9 @@ const transformations = [
       "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=800&q=80",
     afterImage:
       "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=800&q=80",
+    dogName: "Luna",
+    breed: "Cavoodle",
+    ownerQuote: "She came home looking like a completely different dog!",
   },
   {
     id: "ba-2",
@@ -27,8 +31,29 @@ const transformations = [
       "https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?w=800&q=80",
     afterImage:
       "https://images.unsplash.com/photo-1552053831-71594a27632d?w=800&q=80",
+    dogName: "Charlie",
+    breed: "Golden Retriever",
+    ownerQuote: "The de-shedding treatment is a game changer for our house.",
   },
 ];
+
+const staggerContainer = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const staggerItem = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" as const },
+  },
+};
 
 export function BeforeAfterGallery() {
   const remaining = galleryItems.slice(0, 4);
@@ -48,27 +73,50 @@ export function BeforeAfterGallery() {
       />
 
       {/* Before/After sliders */}
-      <div className="mt-16 grid gap-6 md:grid-cols-2">
-        {transformations.map((t, i) => (
-          <FadeInSection key={t.id} delay={i * 0.15}>
-            <div>
-              <BeforeAfterSlider
-                beforeImage={t.beforeImage}
-                afterImage={t.afterImage}
-                alt={t.label}
-              />
-              <p className="mt-3 text-center font-display font-bold text-pw-charcoal text-sm">
+      <motion.div
+        className="mt-16 grid gap-6 md:grid-cols-2"
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        {transformations.map((t) => (
+          <motion.div key={t.id} variants={staggerItem}>
+            <BeforeAfterSlider
+              beforeImage={t.beforeImage}
+              afterImage={t.afterImage}
+              alt={t.label}
+            />
+            {/* Caption: dog name, breed, and owner quote */}
+            <div className="mt-3 text-center">
+              <p className="font-display font-bold text-pw-charcoal text-sm">
                 {t.label}
               </p>
+              {t.dogName && (
+                <p className="text-pw-charcoal/60 text-xs mt-1">
+                  {t.dogName} the {t.breed}
+                </p>
+              )}
+              {t.ownerQuote && (
+                <p className="text-pw-charcoal/50 text-xs italic mt-1">
+                  &ldquo;{t.ownerQuote}&rdquo;
+                </p>
+              )}
             </div>
-          </FadeInSection>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
-      {/* Remaining gallery — masonry style */}
-      <div className="mt-12 columns-2 lg:columns-4 gap-4 space-y-4">
+      {/* Remaining gallery — masonry style with staggered entrance */}
+      <motion.div
+        className="mt-12 columns-2 lg:columns-4 gap-4 space-y-4"
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+      >
         {remaining.map((item, i) => (
-          <FadeInSection key={item.id} delay={0.3 + i * 0.08}>
+          <motion.div key={item.id} variants={staggerItem}>
             <div className="break-inside-avoid group relative overflow-hidden rounded-xl cursor-pointer">
               <Image
                 src={item.image}
@@ -83,16 +131,28 @@ export function BeforeAfterGallery() {
                 <p className="font-display font-bold text-white text-sm">
                   {item.label}
                 </p>
+                {item.dogName && (
+                  <p className="text-white/70 text-xs mt-0.5">
+                    {item.dogName} the {item.breed}
+                  </p>
+                )}
               </div>
             </div>
-          </FadeInSection>
+            {/* Caption below gallery card */}
+            {item.ownerQuote && (
+              <p className="text-pw-charcoal/50 text-xs italic mt-2 text-center px-2">
+                &ldquo;{item.ownerQuote}&rdquo;
+              </p>
+            )}
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
+      {/* Contextual CTA */}
       <FadeInSection delay={0.4} className="mt-12 text-center">
         <Button variant="secondary" asChild>
           <Link href="/gallery">
-            View Full Gallery
+            See What We Can Do for Your Pup
             <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </Button>

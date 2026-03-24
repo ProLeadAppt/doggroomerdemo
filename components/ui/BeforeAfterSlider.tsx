@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import Image from "next/image";
 import { GripVertical } from "lucide-react";
+import { useInView, motion, animate } from "framer-motion";
 
 type BeforeAfterSliderProps = {
   beforeImage: string;
@@ -22,6 +23,22 @@ export function BeforeAfterSlider({
   const [position, setPosition] = useState(50);
   const containerRef = useRef<HTMLDivElement>(null);
   const isDragging = useRef(false);
+  const hasAnimated = useRef(false);
+  const isInView = useInView(containerRef, { once: true, amount: 0.4 });
+
+  // Auto-teach animation: 30% -> 70% -> 50% over 2s when first in view
+  useEffect(() => {
+    if (!isInView || hasAnimated.current) return;
+    hasAnimated.current = true;
+
+    const controls = animate(50, [30, 70, 50], {
+      duration: 2,
+      ease: "easeInOut",
+      onUpdate: (v) => setPosition(v),
+    });
+
+    return () => controls.stop();
+  }, [isInView]);
 
   const updatePosition = useCallback((clientX: number) => {
     if (!containerRef.current) return;
@@ -97,24 +114,26 @@ export function BeforeAfterSlider({
       >
         <div className="absolute inset-y-0 -translate-x-1/2 w-[2px] bg-white shadow-[0_0_8px_rgba(255,255,255,0.5)]" />
 
-        {/* Drag handle */}
-        <div
+        {/* Drag handle — 48px minimum touch target on mobile */}
+        <motion.div
           role="slider"
           aria-label="Drag to compare before and after"
           aria-valuemin={0}
           aria-valuemax={100}
           aria-valuenow={Math.round(position)}
           tabIndex={0}
-          className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center cursor-col-resize hover:scale-110 transition-transform"
+          className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 md:w-10 md:h-10 rounded-full bg-white shadow-lg flex items-center justify-center cursor-col-resize hover:scale-110 transition-transform"
           onMouseDown={handleMouseDown}
           onTouchStart={handleMouseDown}
           onKeyDown={(e) => {
             if (e.key === "ArrowLeft") setPosition((p) => Math.max(5, p - 5));
             if (e.key === "ArrowRight") setPosition((p) => Math.min(95, p + 5));
           }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
         >
-          <GripVertical className="h-4 w-4 text-pw-charcoal" aria-hidden="true" />
-        </div>
+          <GripVertical className="h-5 w-5 md:h-4 md:w-4 text-pw-charcoal" aria-hidden="true" />
+        </motion.div>
       </div>
 
       {/* Labels */}

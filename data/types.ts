@@ -68,6 +68,9 @@ export interface GalleryItem {
   category: string;
   beforeImage?: string;
   afterImage?: string;
+  dogName?: string;
+  breed?: string;
+  ownerQuote?: string;
 }
 
 export interface Review {
