@@ -36,11 +36,11 @@ export function ServicesOverview() {
         badge="Our Services"
         title={
           <>
-            Expert grooming for{" "}
-            <span className="text-shimmer">every breed</span>
+            Find the perfect{" "}
+            <span className="text-shimmer">groom</span>
           </>
         }
-        subtitle="From a quick freshen-up to the full pamper experience, we've got your pup covered."
+        subtitle="From a quick freshen-up to the ultimate pamper day — tailored to your pup's breed, coat, and personality."
       />
 
       <div className="mt-16 space-y-6">

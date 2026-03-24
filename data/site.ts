@@ -87,7 +87,7 @@ export const services: Service[] = [
     name: "Bath & Tidy",
     tag: "Essential",
     description:
-      "A thorough wash, blow dry, nail trim, ear clean, sanitary trim, and a spritz of cologne. Your pup leaves fresh and clean.",
+      "Give your pup a spa-quality clean with premium shampoos, a blow dry, nail trim, ear clean, sanitary trim, and a finishing cologne spritz. Fresh, happy, and tail-wagging in just one hour.",
     price: "$65",
     duration: "60 min",
     // TODO: Replace with /images/services/bath-and-tidy.jpg
@@ -99,7 +99,7 @@ export const services: Service[] = [
     name: "Full Groom \u2014 Small",
     tag: "Under 10kg",
     description:
-      "Everything in the Bath & Tidy plus a full haircut to breed standard or your preference. Perfect for Cavoodles, Maltese, and Shih Tzus.",
+      "Your small pup gets the full VIP treatment — bath, blow dry, and a precision haircut styled to breed standard or your preference. A favourite with Cavoodle, Maltese, and Shih Tzu parents.",
     price: "$85",
     duration: "90 min",
     // TODO: Replace with /images/services/full-groom-small.jpg
@@ -112,7 +112,7 @@ export const services: Service[] = [
     name: "Full Groom \u2014 Medium",
     tag: "10\u201325kg",
     description:
-      "Full styling for medium breeds like Spoodles, Cocker Spaniels, and Border Collies. Adjusted for size and coat type.",
+      "Tailored styling for medium breeds — Spoodles, Cocker Spaniels, Border Collies, and more. Every groom is adjusted for your dog's unique coat type and personality.",
     price: "$105",
     duration: "2 hrs",
     // TODO: Replace with /images/services/full-groom-medium.jpg
@@ -124,7 +124,7 @@ export const services: Service[] = [
     name: "Full Groom \u2014 Large",
     tag: "25kg+",
     description:
-      "Expert grooming for Golden Retrievers, Labradors, Huskies, and other large breeds. Price based on coat condition.",
+      "Big dogs deserve big love. Expert grooming for Golden Retrievers, Labradors, Huskies, and all large breeds — with pricing based on coat condition so you only pay for what your pup needs.",
     price: "From $130",
     duration: "2.5 hrs",
     // TODO: Replace with /images/services/full-groom-large.jpg
@@ -136,7 +136,7 @@ export const services: Service[] = [
     name: "Puppy\u2019s First Groom",
     tag: "Under 6 months",
     description:
-      "A gentle introduction to grooming \u2014 bath, light trim, nail clip, and plenty of treats and patience. Building positive associations from day one.",
+      "Set your puppy up for a lifetime of stress-free grooming. A gentle first experience with a warm bath, light trim, nail clip, and plenty of treats \u2014 so they actually look forward to their next visit.",
     price: "$55",
     duration: "45 min",
     // TODO: Replace with /images/services/puppy-first-groom.jpg
@@ -148,7 +148,7 @@ export const services: Service[] = [
     name: "The Works",
     tag: "Premium",
     description:
-      "The ultimate pamper session \u2014 full groom plus de-shed, teeth brushing, pawdicure, and blueberry facial. Your dog will thank you.",
+      "The ultimate pamper session \u2014 full groom plus de-shed, teeth brushing, pawdicure, and blueberry facial. Our most-requested package for dogs who deserve the best.",
     price: "$150\u2013$180",
     duration: "3 hrs",
     // TODO: Replace with /images/services/the-works.jpg
@@ -163,7 +163,7 @@ export const addOns: AddOnService[] = [
     id: "deshed",
     name: "De-shedding Treatment",
     price: "$30\u2013$50",
-    description: "Reduces shedding up to 80%. Based on size.",
+    description: "Say goodbye to fur tumbleweeds \u2014 reduces shedding up to 80%. Price based on size.",
   },
   {
     id: "teeth",
@@ -175,7 +175,7 @@ export const addOns: AddOnService[] = [
     id: "flea-tick",
     name: "Flea & Tick Wash",
     price: "$20",
-    description: "Medicated wash add-on.",
+    description: "Vet-grade medicated wash that keeps pests away and your pup comfortable.",
   },
   {
     id: "pawdicure",
@@ -193,7 +193,7 @@ export const addOns: AddOnService[] = [
     id: "coat-conditioning",
     name: "Coat Conditioning",
     price: "$20\u2013$35",
-    description: "Deep hydration for dry or damaged coats.",
+    description: "Restore shine and softness with deep hydration for dry or damaged coats.",
   },
 ];
 
@@ -504,37 +504,37 @@ export const faq: FAQ[] = [
   {
     question: "Do I need to book in advance?",
     answer:
-      "Yes, we recommend booking online at least a few days ahead. We\u2019re a small team and our spots fill up quickly, especially on Saturdays. You can book online anytime or give us a call.",
+      "Yes, we recommend booking online at least a few days ahead \u2014 we\u2019re a small team and our spots fill up fast, especially Saturdays. The good news? Online booking takes under a minute, and you\u2019ll get instant confirmation. You can also call us at (02) 8912 3456.",
     category: "Booking",
   },
   {
     question: "What if my dog is nervous or has never been groomed before?",
     answer:
-      "We specialise in nervous and first-time dogs. Our Puppy\u2019s First Groom service is designed to build positive associations with gentle handling, treats, and patience. We\u2019ll go at your dog\u2019s pace.",
+      "You\u2019re in the right place! We specialise in nervous and first-time dogs \u2014 it\u2019s one of the things our 127+ five-star reviewers mention most. Our Puppy\u2019s First Groom service ($55) is designed to build positive associations with gentle handling, treats, and patience. We\u2019ll always go at your dog\u2019s pace.",
     category: "Services",
   },
   {
     question: "How long does a groom take?",
     answer:
-      "A Bath & Tidy takes about 60 minutes. Full grooms range from 90 minutes to 2.5 hours depending on your dog\u2019s size and coat condition. We\u2019ll give you a time estimate when you drop off.",
+      "A Bath & Tidy takes about 60 minutes. Full grooms range from 90 minutes to 2.5 hours depending on your dog\u2019s size and coat condition. We never rush \u2014 your pup gets the time and attention they deserve. We\u2019ll give you an accurate time estimate at drop-off.",
     category: "Services",
   },
   {
     question: "Do I need to stay during the groom?",
     answer:
-      "No, most owners drop off and pick up. We\u2019ll send you a text when your pup is ready. If your dog has severe anxiety, we can discuss options for a stay-and-watch arrangement.",
+      "No \u2014 most owners drop off and pick up, which is actually less stressful for your dog. We\u2019ll send you a text (and a cute photo!) when your pup is ready. If your dog has severe anxiety, we can discuss options for a stay-and-watch arrangement.",
     category: "Services",
   },
   {
     question: "What products do you use?",
     answer:
-      "We use premium, natural grooming products that are gentle on sensitive skin. All our shampoos are pH-balanced for dogs and free from harsh chemicals. We can accommodate specific product requests.",
+      "We use premium, Australian-made grooming products that are gentle on even the most sensitive skin. All our shampoos are pH-balanced for dogs and free from harsh chemicals. Many of our 4,000+ happy pups have skin sensitivities \u2014 we\u2019re experienced with them. Just let us know about any allergies when you book.",
     category: "Dog Care",
   },
   {
     question: "Is parking available?",
     answer:
-      "Yes, there\u2019s 2-hour street parking on Darling Street and surrounding streets. The closest car park is at Balmain Leagues Club, a 3-minute walk away.",
+      "Yes! There\u2019s 2-hour street parking on Darling Street and surrounding streets. The closest car park is at Balmain Leagues Club, a 3-minute walk away. Drop-off and pick-up usually takes less than 5 minutes, so parking is never an issue.",
     category: "Booking",
   },
 ];

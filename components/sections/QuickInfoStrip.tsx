@@ -1,13 +1,14 @@
 "use client";
 
-import { Clock, Phone, MapPin } from "lucide-react";
+import { Clock, Phone, MapPin, Star } from "lucide-react";
 import { brand } from "../../data/site";
 import { FadeInSection } from "../motion/FadeInSection";
 
 const items = [
-  { icon: Clock, label: brand.hoursSummary },
+  { icon: Star, label: `${brand.googleRating} Google Rating \u00b7 ${brand.reviewCount}+ Reviews` },
+  { icon: Clock, label: `Open 6 days \u00b7 ${brand.hoursSummary}` },
   { icon: Phone, label: brand.phone },
-  { icon: MapPin, label: brand.address },
+  { icon: MapPin, label: `${brand.suburb} \u00b7 Free street parking` },
 ];
 
 export function QuickInfoStrip() {
