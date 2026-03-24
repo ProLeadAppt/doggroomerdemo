@@ -13,7 +13,7 @@ export default function ReviewsPage() {
   return (
     <div className="flex min-h-screen flex-col bg-pw-cream text-pw-charcoal">
       <SiteHeader />
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         <ReviewsPageContent />
       </main>
       <SiteFooter />

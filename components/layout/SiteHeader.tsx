@@ -71,8 +71,8 @@ export function SiteHeader() {
           {/* Mobile hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="flex flex-col gap-[5px] lg:hidden p-2"
-            aria-label="Toggle menu"
+            className="flex flex-col gap-[5px] lg:hidden p-3 min-w-[44px] min-h-[44px] items-center justify-center"
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
           >
             <motion.span

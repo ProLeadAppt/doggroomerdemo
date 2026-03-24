@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Quicksand, DM_Sans, Pacifico } from "next/font/google";
 import ClientSideEffects from "@/components/layout/ClientSideEffects";
+import SkipToContent from "@/components/ui/SkipToContent";
 import "./globals.css";
 
 const displayFont = Quicksand({
@@ -93,6 +94,7 @@ export default function RootLayout({
       <body
         className={`${displayFont.variable} ${bodyFont.variable} ${scriptFont.variable} min-h-screen bg-pw-cream text-pw-charcoal antialiased font-body relative overflow-x-hidden`}
       >
+        <SkipToContent />
         <ClientSideEffects />
         {children}
       </body>

@@ -31,6 +31,7 @@ export function FAQSection() {
             <div className="border-b border-pw-border last:border-b-0">
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                aria-expanded={openIndex === i}
                 className="w-full flex items-center justify-between py-5 text-left group"
               >
                 <span className="font-display text-base font-semibold text-pw-charcoal group-hover:text-pw-teal transition-colors pr-4">

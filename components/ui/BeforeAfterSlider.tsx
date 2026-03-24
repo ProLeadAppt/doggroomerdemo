@@ -99,11 +99,21 @@ export function BeforeAfterSlider({
 
         {/* Drag handle */}
         <div
+          role="slider"
+          aria-label="Drag to compare before and after"
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-valuenow={Math.round(position)}
+          tabIndex={0}
           className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center cursor-col-resize hover:scale-110 transition-transform"
           onMouseDown={handleMouseDown}
           onTouchStart={handleMouseDown}
+          onKeyDown={(e) => {
+            if (e.key === "ArrowLeft") setPosition((p) => Math.max(5, p - 5));
+            if (e.key === "ArrowRight") setPosition((p) => Math.min(95, p + 5));
+          }}
         >
-          <GripVertical className="h-4 w-4 text-pw-charcoal" />
+          <GripVertical className="h-4 w-4 text-pw-charcoal" aria-hidden="true" />
         </div>
       </div>
 

@@ -59,7 +59,7 @@ export default async function BlogArticlePage({ params }: Props) {
         ])}
       />
       <SiteHeader />
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         {/* Hero image */}
         <div className="relative h-[35vh] min-h-[280px] overflow-hidden">
           <Image
