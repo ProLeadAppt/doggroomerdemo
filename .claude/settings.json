@@ -31,7 +31,8 @@
       "Bash(npm install:*)",
       "Bash(npx next:*)",
       "Bash(curl -s http://localhost:3000)",
-      "Bash(find '/d/Dev/D C Willans Artwork' -type f -name *BeforeAfter* -o -name *Slider*)"
+      "Bash(find '/d/Dev/D C Willans Artwork' -type f -name *BeforeAfter* -o -name *Slider*)",
+      "Bash(bash setup-skills.sh)"
     ],
     "additionalDirectories": [
       "d:\\Dev\\Dog Grooming Demo\\app\\blog"
