@@ -57,7 +57,7 @@ const cardVariants = {
 export function WhyPawsome() {
   return (
     <div className="bg-white border-y border-pw-border">
-      <div className="mx-auto max-w-pw-container px-6 py-14">
+      <div className="mx-auto max-w-pw-container px-4 sm:px-6 py-10 sm:py-14">
         <motion.div
           variants={containerVariants}
           initial="hidden"

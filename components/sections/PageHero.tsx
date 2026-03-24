@@ -12,7 +12,7 @@ type PageHeroProps = {
 
 export function PageHero({ badge, badgeTone = "sage", title, subtitle }: PageHeroProps) {
   return (
-    <section className="relative bg-pw-elevated pt-32 pb-16 sm:pt-40 sm:pb-20 px-6 overflow-hidden">
+    <section className="relative bg-pw-elevated pt-28 pb-12 sm:pt-36 sm:pb-16 lg:pt-40 lg:pb-20 px-4 sm:px-6 overflow-hidden">
       {/* Subtle radial glow */}
       <div className="absolute inset-0 bg-radial-spotlight pointer-events-none" />
 

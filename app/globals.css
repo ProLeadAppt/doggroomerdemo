@@ -174,4 +174,22 @@ body {
   .safe-bottom {
     padding-bottom: env(safe-area-inset-bottom);
   }
+  .sticky-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* ─── Mobile-specific responsive utilities ─── */
+@layer utilities {
+  /* Ensure tap targets meet minimum 48px */
+  .touch-target {
+    min-height: 48px;
+    min-width: 48px;
+  }
+
+  /* Prevent horizontal overflow on mobile */
+  .overflow-x-guard {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
 }

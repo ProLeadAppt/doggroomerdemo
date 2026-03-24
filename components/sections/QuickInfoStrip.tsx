@@ -14,9 +14,9 @@ const items = [
 export function QuickInfoStrip() {
   return (
     <div className="bg-pw-teal">
-      <div className="mx-auto max-w-pw-container px-6 py-4">
+      <div className="mx-auto max-w-pw-container px-4 sm:px-6 py-3 sm:py-4">
         <FadeInSection>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-8">
             {items.map((item) => (
               <div
                 key={item.label}

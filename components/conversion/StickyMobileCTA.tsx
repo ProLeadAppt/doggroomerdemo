@@ -34,10 +34,10 @@ export default function StickyMobileCTA() {
           className="fixed bottom-0 inset-x-0 z-40 lg:hidden"
           style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
         >
-          <div className="bg-white/95 backdrop-blur-lg border-t border-pw-border px-4 py-3 flex gap-3">
+          <div className="bg-white/95 backdrop-blur-lg border-t border-pw-border px-4 py-2.5 sm:py-3 flex gap-3">
             <Link
               href="/booking"
-              className="flex-1 bg-pw-terracotta text-white text-center py-3 rounded-full font-display font-bold text-sm"
+              className="flex-1 bg-pw-terracotta text-white text-center py-3 min-h-[48px] flex items-center justify-center rounded-full font-display font-bold text-sm"
             >
               Book Your Pup&apos;s Pamper Day
             </Link>

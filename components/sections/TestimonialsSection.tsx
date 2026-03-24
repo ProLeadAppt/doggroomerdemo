@@ -256,7 +256,7 @@ export function TestimonialsSection() {
 
         {/* Navigation dots */}
         <div
-          className="flex justify-center gap-2 mt-8"
+          className="flex justify-center gap-0 mt-4"
           role="tablist"
           aria-label="Testimonial navigation"
         >
@@ -264,15 +264,17 @@ export function TestimonialsSection() {
             <button
               key={i}
               onClick={() => goto(i)}
-              className={`h-2.5 rounded-full transition-all duration-300 ${
-                i === active
-                  ? "w-7 bg-pw-teal"
-                  : "w-2.5 bg-pw-border hover:bg-pw-muted"
-              }`}
+              className="relative flex items-center justify-center min-h-[44px] min-w-[44px]"
               role="tab"
               aria-selected={i === active}
               aria-label={`Go to review ${i + 1}`}
-            />
+            >
+              <span className={`block h-2.5 rounded-full transition-all duration-300 ${
+                i === active
+                  ? "w-7 bg-pw-teal"
+                  : "w-2.5 bg-pw-border hover:bg-pw-muted"
+              }`} />
+            </button>
           ))}
         </div>
       </FadeInSection>

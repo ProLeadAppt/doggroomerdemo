@@ -53,9 +53,9 @@ export function SiteHeader() {
             : "bg-transparent border-b border-transparent"
         }`}
       >
-        <div className="mx-auto flex h-20 w-full max-w-pw-container items-center justify-between px-6">
+        <div className="mx-auto flex h-16 sm:h-20 w-full max-w-pw-container items-center justify-between px-4 sm:px-6">
           {/* Logo */}
-          <Link href="/" className="group flex items-center gap-3">
+          <Link href="/" className="group flex items-center gap-2 sm:gap-3">
             <div className="relative h-11 w-11 overflow-hidden rounded-full border border-pw-sage/30 bg-pw-teal p-1 transition-transform duration-500 group-hover:scale-110 flex items-center justify-center">
               <PawPrint className="h-5 w-5 text-white" />
             </div>

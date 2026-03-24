@@ -18,7 +18,7 @@ export function OfferBanner() {
           transition={{ duration: 0.3 }}
           className="bg-pw-terracotta overflow-hidden"
         >
-          <div className="mx-auto max-w-pw-container px-6 py-3 flex items-center justify-center gap-3 relative">
+          <div className="mx-auto max-w-pw-container px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-center gap-3 relative">
             <Sparkles className="h-4 w-4 text-white/80 hidden sm:block" />
             <p className="text-sm text-white font-medium text-center">
               🐾 New pup parent?{" "}
@@ -34,7 +34,7 @@ export function OfferBanner() {
             </p>
             <button
               onClick={() => setVisible(false)}
-              className="absolute right-4 text-white/60 hover:text-white transition-colors"
+              className="absolute right-2 sm:right-4 p-2 min-w-[44px] min-h-[44px] flex items-center justify-center text-white/60 hover:text-white transition-colors"
               aria-label="Dismiss offer"
             >
               <X className="h-4 w-4" />

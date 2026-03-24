@@ -32,7 +32,7 @@ export function SiteFooter() {
         {/* Animated paw stripe */}
         <div className="paw-stripe-animated h-1 w-full opacity-50" />
 
-        <div className="mx-auto w-full max-w-pw-container px-6 py-16 sm:py-20">
+        <div className="mx-auto w-full max-w-pw-container px-4 sm:px-6 py-12 sm:py-16 lg:py-20">
           {/* Trust badges row */}
           <div className="flex flex-wrap justify-center gap-6 mb-14 pb-10 border-b border-white/10">
             {[
@@ -94,7 +94,7 @@ export function SiteFooter() {
                     />
                     <button
                       type="submit"
-                      className="w-9 h-9 rounded-full bg-pw-sage flex items-center justify-center hover:bg-pw-sage-400 transition-colors flex-shrink-0"
+                      className="w-11 h-11 sm:w-9 sm:h-9 rounded-full bg-pw-sage flex items-center justify-center hover:bg-pw-sage-400 transition-colors flex-shrink-0"
                     >
                       <Send className="h-3.5 w-3.5 text-white" />
                     </button>
@@ -114,7 +114,7 @@ export function SiteFooter() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-pw-subtle hover:text-white hover:border-pw-sage/50 hover:shadow-glow-sage transition-all duration-300"
+                    className="w-11 h-11 sm:w-9 sm:h-9 rounded-full border border-white/10 flex items-center justify-center text-pw-subtle hover:text-white hover:border-pw-sage/50 hover:shadow-glow-sage transition-all duration-300"
                   >
                     <social.icon className="h-4 w-4" />
                   </Link>
@@ -189,7 +189,8 @@ export function SiteFooter() {
           </div>
 
           {/* Bottom bar */}
-          <div className="mt-16 flex flex-col items-center gap-4 border-t border-white/10 pt-8 sm:flex-row sm:justify-between">
+          <div className="mt-12 sm:mt-16 flex flex-col items-center gap-4 border-t border-white/10 pt-8 pb-safe sm:flex-row sm:justify-between"
+            style={{ paddingBottom: "max(1rem, env(safe-area-inset-bottom))" }}>
             <p className="text-xs text-pw-subtle">
               &copy; {year} Pawsome &amp; Co. All rights reserved.
             </p>
@@ -216,7 +217,7 @@ export function SiteFooter() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="fixed bottom-6 right-6 z-50 w-11 h-11 rounded-full bg-pw-teal text-white shadow-pw-lg hover:bg-pw-teal-400 transition-colors flex items-center justify-center"
+            className="fixed bottom-20 right-4 sm:bottom-6 sm:right-6 z-50 w-12 h-12 sm:w-11 sm:h-11 rounded-full bg-pw-teal text-white shadow-pw-lg hover:bg-pw-teal-400 transition-colors flex items-center justify-center"
             aria-label="Scroll to top"
           >
             <ArrowUp className="h-5 w-5" />

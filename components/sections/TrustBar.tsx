@@ -69,7 +69,7 @@ export function TrustBar() {
       </div>
 
       {/* Stats row */}
-      <div className="mx-auto max-w-pw-container px-6 py-10">
+      <div className="mx-auto max-w-pw-container px-4 sm:px-6 py-8 sm:py-10">
         <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
           {/* Animated stat cards */}
           <motion.div

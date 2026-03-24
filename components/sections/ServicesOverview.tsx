@@ -59,7 +59,7 @@ export function ServicesOverview() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/20 md:bg-gradient-to-r md:from-transparent md:to-white" />
                 </div>
-                <div className="p-8 flex flex-col justify-center">
+                <div className="p-5 sm:p-8 flex flex-col justify-center">
                   <div className="flex items-center gap-2">
                     <Badge tone="warm">
                       <TrendingUp className="mr-1 h-3 w-3" />

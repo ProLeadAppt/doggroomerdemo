@@ -53,7 +53,7 @@ export function HeroSection() {
           "radial-gradient(ellipse 80% 60% at 20% 60%, hsla(100,20%,55%,0.05) 0%, transparent 60%), radial-gradient(ellipse 60% 50% at 80% 30%, hsla(20,55%,55%,0.05) 0%, transparent 60%)",
       }}
     >
-      <div className="mx-auto w-full max-w-pw-container px-6 py-24 lg:py-32">
+      <div className="mx-auto w-full max-w-pw-container px-4 sm:px-6 py-20 sm:py-24 lg:py-32">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left column — content */}
           <motion.div
@@ -123,7 +123,7 @@ export function HeroSection() {
             variants={imageVariants}
             initial="hidden"
             animate="visible"
-            className="relative w-full aspect-[4/5] lg:aspect-[3/4] rounded-3xl overflow-hidden shadow-pw-xl"
+            className="relative w-full aspect-[3/4] sm:aspect-[4/5] lg:aspect-[3/4] rounded-3xl overflow-hidden shadow-pw-xl"
           >
             <Image
               src={hero.image}
