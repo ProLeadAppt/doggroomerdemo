@@ -575,6 +575,12 @@ export const blogPosts: BlogPostMeta[] = [
   },
 ];
 
+export const conversionData = {
+  bookingsThisMonth: 127,
+  spotsLeftThisWeek: 3,
+  totalGrooms: 2400,
+};
+
 export const socialCards = [
   {
     id: "instagram",

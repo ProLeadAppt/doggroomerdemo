@@ -9,7 +9,21 @@ import { SectionHeading } from "../ui/SectionHeading";
 import { Badge } from "../ui/Badge";
 import { Button } from "../ui/Button";
 import { FadeInSection } from "../motion/FadeInSection";
-import { services } from "../../data/site";
+import { services, conversionData } from "../../data/site";
+
+const container = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
+  },
+};
 
 export function ServicesOverview() {
   // First popular service is the hero card
@@ -63,7 +77,7 @@ export function ServicesOverview() {
                       className="font-display text-3xl font-bold text-pw-teal"
                       whileHover={{ scale: 1.05 }}
                     >
-                      {heroService.price}
+                      from {heroService.price}
                     </motion.span>
                     <span className="text-sm text-pw-muted">
                       {heroService.duration}
@@ -79,69 +93,99 @@ export function ServicesOverview() {
           </Link>
         </FadeInSection>
 
-        {/* Remaining services — 2+3 grid */}
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {rest.map((service, i) => (
-            <FadeInSection key={service.id} delay={i * 0.06}>
-              <Link href="/booking" className="block group h-full">
-                <div className="relative overflow-hidden rounded-2xl border border-pw-border bg-white transition-all duration-500 hover:shadow-pw-lg hover:border-pw-sage/30 h-full flex flex-col">
-                  {/* Image with desaturate → saturate */}
-                  <div className="relative h-44 overflow-hidden">
-                    <Image
-                      src={service.image}
-                      alt={`${service.name} — dog grooming service at Pawsome & Co. Balmain`}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent" />
-                    {service.popular && (
-                      <div className="absolute top-3 right-3">
-                        <Badge tone="warm">Popular</Badge>
+        {/* Remaining services — staggered grid */}
+        <motion.div
+          className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+          variants={container}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          {rest.map((service) => (
+            <motion.div key={service.id} variants={item}>
+              <motion.div
+                whileHover={{ y: -8 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="h-full"
+              >
+                <Link href="/booking" className="block group h-full">
+                  <div className="relative overflow-hidden rounded-2xl border border-pw-border bg-white transition-all duration-500 hover:shadow-pw-lg hover:border-pw-sage/30 h-full flex flex-col">
+                    {/* Image with desaturate → saturate */}
+                    <div className="relative h-44 overflow-hidden">
+                      <Image
+                        src={service.image}
+                        alt={`${service.name} — dog grooming service at Pawsome & Co. Balmain`}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent" />
+                      {service.popular && (
+                        <div className="absolute top-3 right-3">
+                          <Badge tone="warm">
+                            <TrendingUp className="mr-1 h-3 w-3" />
+                            Most Popular
+                          </Badge>
+                        </div>
+                      )}
+                      <div className="absolute bottom-3 left-3">
+                        <Badge tone="neutral">{service.tag}</Badge>
                       </div>
-                    )}
-                    <div className="absolute bottom-3 left-3">
-                      <Badge tone="neutral">{service.tag}</Badge>
                     </div>
-                  </div>
 
-                  {/* Content */}
-                  <div className="p-5 flex-1 flex flex-col">
-                    <h3 className="font-display text-lg font-bold text-pw-charcoal group-hover:text-pw-teal transition-colors">
-                      {service.name}
-                    </h3>
-                    <p className="mt-2 text-sm text-pw-muted leading-relaxed flex-1">
-                      {service.description}
-                    </p>
-                    <div className="mt-4 flex items-center justify-between">
-                      <div>
-                        <span className="font-display text-xl font-bold text-pw-teal">
-                          {service.price}
-                        </span>
-                        <span className="text-xs text-pw-muted ml-2">
-                          {service.duration}
+                    {/* Content */}
+                    <div className="p-5 flex-1 flex flex-col">
+                      <h3 className="font-display text-lg font-bold text-pw-charcoal group-hover:text-pw-teal transition-colors">
+                        {service.name}
+                      </h3>
+                      <p className="mt-2 text-sm text-pw-muted leading-relaxed flex-1">
+                        {service.description}
+                      </p>
+                      <div className="mt-4 flex items-center justify-between">
+                        <div>
+                          <span className="font-display text-xl font-bold text-pw-teal">
+                            from {service.price}
+                          </span>
+                          <span className="text-xs text-pw-muted ml-2">
+                            {service.duration}
+                          </span>
+                        </div>
+                        <span className="text-xs font-semibold text-pw-terracotta flex items-center gap-1 group-hover:gap-2 transition-all">
+                          Book
+                          <ArrowRight className="h-3 w-3" />
                         </span>
                       </div>
-                      <span className="text-xs font-semibold text-pw-terracotta flex items-center gap-1 group-hover:gap-2 transition-all">
-                        Book
-                        <ArrowRight className="h-3 w-3" />
-                      </span>
                     </div>
-                  </div>
 
-                  {/* Hover glow border */}
-                  <div className="absolute inset-0 rounded-2xl border-2 border-pw-terracotta/0 group-hover:border-pw-terracotta/15 transition-colors duration-500 pointer-events-none" />
-                </div>
-              </Link>
-            </FadeInSection>
+                    {/* Hover glow border */}
+                    <div className="absolute inset-0 rounded-2xl border-2 border-pw-terracotta/0 group-hover:border-pw-terracotta/15 transition-colors duration-500 pointer-events-none" />
+                  </div>
+                </Link>
+              </motion.div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
-      <FadeInSection delay={0.3} className="mt-12 text-center">
+      {/* Social proof counter */}
+      <FadeInSection delay={0.2} className="mt-8 text-center">
+        <p className="text-sm text-pw-muted">
+          <span className="font-semibold text-pw-charcoal">
+            {conversionData.bookingsThisMonth} pups
+          </span>{" "}
+          booked this month &mdash; only{" "}
+          <span className="font-semibold text-pw-terracotta">
+            {conversionData.spotsLeftThisWeek} spots
+          </span>{" "}
+          left this week
+        </p>
+      </FadeInSection>
+
+      {/* Contextual CTA */}
+      <FadeInSection delay={0.3} className="mt-6 text-center">
         <Button variant="secondary" asChild>
           <Link href="/services">
-            View Full Service Menu
+            Find Your Perfect Groom
             <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </Button>
