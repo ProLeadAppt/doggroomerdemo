@@ -67,8 +67,9 @@ export function BeforeAfterSlider({
       <div className="absolute inset-0">
         <Image
           src={afterImage}
-          alt={`${alt} — after`}
+          alt={`${alt} — after grooming at Pawsome & Co.`}
           fill
+          sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover"
           draggable={false}
         />
@@ -81,8 +82,9 @@ export function BeforeAfterSlider({
       >
         <Image
           src={beforeImage}
-          alt={`${alt} — before`}
+          alt={`${alt} — before grooming at Pawsome & Co.`}
           fill
+          sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover"
           draggable={false}
         />

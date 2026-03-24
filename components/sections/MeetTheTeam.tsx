@@ -54,8 +54,9 @@ export function MeetTheTeam() {
                 <div className="relative h-64 overflow-hidden">
                   <Image
                     src={member.image}
-                    alt={member.name}
+                    alt={`${member.name} — ${member.role} at Pawsome & Co.`}
                     fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     className="object-cover transition-all duration-700 group-hover:scale-105 group-hover:opacity-[0.15]"
                   />
                   {/* Gradient overlay on non-hover */}

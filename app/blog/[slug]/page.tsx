@@ -66,6 +66,7 @@ export default async function BlogArticlePage({ params }: Props) {
             src={article.image}
             alt={`${article.title} — Pawsome & Co. blog`}
             fill
+            sizes="100vw"
             className="object-cover"
             priority
           />
@@ -149,8 +150,9 @@ export default async function BlogArticlePage({ params }: Props) {
                       <div className="relative w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
                         <Image
                           src={post.image}
-                          alt={post.title}
+                          alt={`${post.title} — Pawsome & Co. blog`}
                           fill
+                          sizes="80px"
                           className="object-cover"
                         />
                       </div>

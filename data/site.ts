@@ -48,6 +48,11 @@ export const brand: Brand = {
   },
 };
 
+// Image paths — currently using Unsplash for placeholder images.
+// TODO: Replace all Unsplash URLs with local paths under public/images/
+// e.g. hero image → /images/hero/hero-dog-grooming-balmain.jpg
+// Once replaced, remove the remotePatterns entry in next.config.mjs.
+
 export const hero = {
   headline: "Premium Dog Grooming in Balmain",
   subheadline:
@@ -56,6 +61,7 @@ export const hero = {
   primaryCtaLabel: "Book a Groom",
   secondaryCtaLabel: "Call Us",
   trustLine: `${brand.googleRating} Stars \u00b7 ${brand.reviewCount} Reviews \u00b7 Est. ${brand.established} \u00b7 ${brand.suburb}`,
+  // TODO: Replace with /images/hero/hero-dog-grooming-balmain.jpg (1920×1080 minimum)
   image:
     "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1920&q=80",
 };
@@ -84,6 +90,7 @@ export const services: Service[] = [
       "A thorough wash, blow dry, nail trim, ear clean, sanitary trim, and a spritz of cologne. Your pup leaves fresh and clean.",
     price: "$65",
     duration: "60 min",
+    // TODO: Replace with /images/services/bath-and-tidy.jpg
     image:
       "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600&q=80",
   },
@@ -95,6 +102,7 @@ export const services: Service[] = [
       "Everything in the Bath & Tidy plus a full haircut to breed standard or your preference. Perfect for Cavoodles, Maltese, and Shih Tzus.",
     price: "$85",
     duration: "90 min",
+    // TODO: Replace with /images/services/full-groom-small.jpg
     image:
       "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=600&q=80",
     popular: true,
@@ -107,6 +115,7 @@ export const services: Service[] = [
       "Full styling for medium breeds like Spoodles, Cocker Spaniels, and Border Collies. Adjusted for size and coat type.",
     price: "$105",
     duration: "2 hrs",
+    // TODO: Replace with /images/services/full-groom-medium.jpg
     image:
       "https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?w=600&q=80",
   },
@@ -118,6 +127,7 @@ export const services: Service[] = [
       "Expert grooming for Golden Retrievers, Labradors, Huskies, and other large breeds. Price based on coat condition.",
     price: "From $130",
     duration: "2.5 hrs",
+    // TODO: Replace with /images/services/full-groom-large.jpg
     image:
       "https://images.unsplash.com/photo-1552053831-71594a27632d?w=600&q=80",
   },
@@ -129,6 +139,7 @@ export const services: Service[] = [
       "A gentle introduction to grooming \u2014 bath, light trim, nail clip, and plenty of treats and patience. Building positive associations from day one.",
     price: "$55",
     duration: "45 min",
+    // TODO: Replace with /images/services/puppy-first-groom.jpg
     image:
       "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=600&q=80",
   },
@@ -140,6 +151,7 @@ export const services: Service[] = [
       "The ultimate pamper session \u2014 full groom plus de-shed, teeth brushing, pawdicure, and blueberry facial. Your dog will thank you.",
     price: "$150\u2013$180",
     duration: "3 hrs",
+    // TODO: Replace with /images/services/the-works.jpg
     image:
       "https://images.unsplash.com/photo-1588943211346-0908a1fb0b01?w=600&q=80",
     popular: true,
@@ -271,6 +283,7 @@ export const galleryItems: GalleryItem[] = [
     id: "gallery-1",
     label: "Cavoodle Transformation",
     description: "From scruffy to stunning \u2014 a full groom for this cheeky Cavoodle.",
+    // TODO: Replace with /images/gallery/cavoodle-transformation.jpg
     image:
       "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&q=80",
     category: "Small Dogs",
@@ -279,6 +292,7 @@ export const galleryItems: GalleryItem[] = [
     id: "gallery-2",
     label: "Golden Retriever Glow-Up",
     description: "De-shed treatment and full groom for this beautiful Golden.",
+    // TODO: Replace with /images/gallery/golden-retriever-glow-up.jpg
     image:
       "https://images.unsplash.com/photo-1552053831-71594a27632d?w=600&q=80",
     category: "Large Dogs",
@@ -287,6 +301,7 @@ export const galleryItems: GalleryItem[] = [
     id: "gallery-3",
     label: "Frenchie Fresh",
     description: "Bath, nail trim, and ear clean for the most photogenic Frenchie.",
+    // TODO: Replace with /images/gallery/frenchie-fresh.jpg
     image:
       "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=600&q=80",
     category: "Small Dogs",
@@ -295,6 +310,7 @@ export const galleryItems: GalleryItem[] = [
     id: "gallery-4",
     label: "Spoodle Style",
     description: "Breed-standard clip for this gorgeous Spoodle.",
+    // TODO: Replace with /images/gallery/spoodle-style.jpg
     image:
       "https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?w=600&q=80",
     category: "Medium Dogs",
@@ -303,6 +319,7 @@ export const galleryItems: GalleryItem[] = [
     id: "gallery-5",
     label: "Puppy\u2019s First Visit",
     description: "Gentle introductory groom \u2014 building trust from day one.",
+    // TODO: Replace with /images/gallery/puppy-first-visit.jpg
     image:
       "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=600&q=80",
     category: "Small Dogs",
@@ -311,6 +328,7 @@ export const galleryItems: GalleryItem[] = [
     id: "gallery-6",
     label: "The Studio",
     description: "Our bright, welcoming space on Darling Street.",
+    // TODO: Replace with /images/gallery/studio-darling-street.jpg
     image:
       "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600&q=80",
     category: "Studio",
@@ -398,6 +416,7 @@ export const team: TeamMember[] = [
     name: "Sophie Chen",
     role: "Owner & Head Groomer",
     bio: "After 10 years grooming dogs across Sydney, Sophie founded Pawsome & Co. in 2019 with a simple mission: make every dog feel safe and leave looking amazing. She specialises in Asian fusion styling and breed-specific cuts.",
+    // TODO: Replace with /images/team/sophie-chen.jpg
     image:
       "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80",
     specialties: ["Cavoodles", "Poodles", "Asian Fusion Styling"],
@@ -407,6 +426,7 @@ export const team: TeamMember[] = [
     name: "Marcus Johnson",
     role: "Senior Groomer",
     bio: "Marcus joined the team in 2020 and brings a calm energy that even the most nervous dogs respond to. He\u2019s our go-to for large breeds and de-shedding treatments.",
+    // TODO: Replace with /images/team/marcus-johnson.jpg
     image:
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80",
     specialties: ["Large Breeds", "De-shedding", "Rescue Dogs"],
@@ -416,6 +436,7 @@ export const team: TeamMember[] = [
     name: "Emily Park",
     role: "Groomer",
     bio: "Emily is a certified dog groomer with a particular talent for puppy introductions. Her patience and gentle touch make first-time visits a breeze.",
+    // TODO: Replace with /images/team/emily-park.jpg
     image:
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80",
     specialties: ["Puppies", "Terriers", "Hand Stripping"],
@@ -425,6 +446,7 @@ export const team: TeamMember[] = [
     name: "Jack Williams",
     role: "Client Experience",
     bio: "Jack keeps everything running smoothly at reception. Booking queries, scheduling, and making sure every dog (and owner) gets a warm welcome.",
+    // TODO: Replace with /images/team/jack-williams.jpg
     image:
       "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80",
     specialties: ["Bookings", "Customer Care"],
@@ -506,6 +528,7 @@ export const blogPosts: BlogPostMeta[] = [
     excerpt:
       "Cavoodles are Australia\u2019s most popular breed \u2014 and one of the most grooming-intensive. Here\u2019s everything you need to know about keeping their coat in top condition.",
     date: "2025-03-15",
+    // TODO: Replace with /images/general/cavoodle-grooming-guide.jpg
     image:
       "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=800&q=80",
     readTime: "5 min read",
@@ -517,6 +540,7 @@ export const blogPosts: BlogPostMeta[] = [
     excerpt:
       "A quick bath at home isn\u2019t always enough. Here are the telltale signs it\u2019s time to book a professional grooming session.",
     date: "2025-03-01",
+    // TODO: Replace with /images/general/dog-bath-time.jpg
     image:
       "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=800&q=80",
     readTime: "4 min read",
@@ -528,6 +552,7 @@ export const blogPosts: BlogPostMeta[] = [
     excerpt:
       "Your puppy\u2019s first grooming experience sets the tone for a lifetime of stress-free visits. Here\u2019s how to make it a positive one.",
     date: "2025-02-14",
+    // TODO: Replace with /images/general/puppy-first-groom-guide.jpg
     image:
       "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=800&q=80",
     readTime: "6 min read",
@@ -539,6 +564,7 @@ export const blogPosts: BlogPostMeta[] = [
     excerpt:
       "Not all groomers are created equal. Here\u2019s what separates a great groomer from the rest, and what to look for when choosing one in Balmain.",
     date: "2025-01-20",
+    // TODO: Replace with /images/general/balmain-dog-grooming-guide.jpg
     image:
       "https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?w=800&q=80",
     readTime: "5 min read",

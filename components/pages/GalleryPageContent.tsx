@@ -73,9 +73,10 @@ export function GalleryPageContent() {
                 >
                   <Image
                     src={item.image}
-                    alt={item.label}
+                    alt={`${item.label} — ${item.description}`}
                     width={600}
                     height={i % 3 === 0 ? 500 : 400}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-pw-charcoal/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -132,9 +133,10 @@ export function GalleryPageContent() {
             >
               <Image
                 src={filtered[lightboxIndex]?.image || ""}
-                alt={filtered[lightboxIndex]?.label || ""}
+                alt={`${filtered[lightboxIndex]?.label || ""} — Pawsome & Co. dog grooming gallery`}
                 width={1200}
                 height={800}
+                sizes="(max-width: 1280px) 100vw, 1200px"
                 className="w-full h-auto max-h-[75vh] object-contain rounded-xl"
               />
               <div className="mt-4 text-center">

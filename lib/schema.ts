@@ -45,6 +45,7 @@ export function getLocalBusinessSchema() {
       bestRating: 5,
     },
     priceRange: "$55 - $299",
+    // TODO: Replace with https://doggroomer.netlify.app/images/general/og-image.jpg once local images are set up
     image: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1200&q=80",
     sameAs: [
       brand.socials.instagram,

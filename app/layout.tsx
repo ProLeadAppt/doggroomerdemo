@@ -57,10 +57,11 @@ export const metadata: Metadata = {
     siteName: "Pawsome & Co.",
     images: [
       {
+        // TODO: Replace with /images/general/og-image.jpg (1200×630) once local images are set up
         url: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1200&h=630&q=80",
         width: 1200,
         height: 630,
-        alt: "Happy groomed dog at Pawsome & Co.",
+        alt: "A happy groomed dog at Pawsome & Co. dog grooming studio in Balmain, Sydney",
       },
     ],
     type: "website",
@@ -71,6 +72,7 @@ export const metadata: Metadata = {
     title: "Pawsome & Co. | Premium Dog Grooming in Balmain",
     description:
       "Where every dog leaves happy. Premium grooming, gentle care, and tail-wagging results.",
+    // TODO: Replace with /images/general/og-image.jpg (1200×630) once local images are set up
     images: [
       "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1200&h=630&q=80",
     ],

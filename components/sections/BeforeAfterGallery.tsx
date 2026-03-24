@@ -72,9 +72,10 @@ export function BeforeAfterGallery() {
             <div className="break-inside-avoid group relative overflow-hidden rounded-xl cursor-pointer">
               <Image
                 src={item.image}
-                alt={item.label}
+                alt={`${item.label} — ${item.description}`}
                 width={400}
                 height={i % 2 === 0 ? 320 : 240}
+                sizes="(max-width: 1024px) 50vw, 25vw"
                 className="w-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-pw-charcoal/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

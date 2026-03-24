@@ -38,8 +38,9 @@ export function ServicesOverview() {
                 <div className="relative h-64 md:h-auto overflow-hidden">
                   <Image
                     src={heroService.image}
-                    alt={heroService.name}
+                    alt={`${heroService.name} — dog grooming service at Pawsome & Co. Balmain`}
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/20 md:bg-gradient-to-r md:from-transparent md:to-white" />
@@ -88,8 +89,9 @@ export function ServicesOverview() {
                   <div className="relative h-44 overflow-hidden">
                     <Image
                       src={service.image}
-                      alt={service.name}
+                      alt={`${service.name} — dog grooming service at Pawsome & Co. Balmain`}
                       fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent" />

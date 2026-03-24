@@ -50,8 +50,9 @@ export function AboutPageContent() {
             <div className="relative rounded-2xl overflow-hidden aspect-[4/3]">
               <Image
                 src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=800&q=80"
-                alt="Pawsome & Co. studio"
+                alt="Inside the Pawsome & Co. dog grooming studio on Darling Street, Balmain"
                 fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-pw-sage/20 to-transparent mix-blend-multiply" />
@@ -116,8 +117,9 @@ export function AboutPageContent() {
                 <div className="relative w-28 h-28 rounded-xl overflow-hidden flex-shrink-0">
                   <Image
                     src={member.image}
-                    alt={member.name}
+                    alt={`${member.name} — ${member.role} at Pawsome & Co.`}
                     fill
+                    sizes="112px"
                     className="object-cover"
                   />
                 </div>

@@ -33,8 +33,9 @@ export function BlogListContent() {
                   <div className="relative h-52 overflow-hidden">
                     <Image
                       src={post.image}
-                      alt={post.title}
+                      alt={`${post.title} — Pawsome & Co. blog`}
                       fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
