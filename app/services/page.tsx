@@ -7,6 +7,13 @@ export const metadata: Metadata = {
   title: "Services & Pricing",
   description:
     "Full grooming menu with pricing for all breeds. Bath & Tidy, Full Grooms, Puppy's First Groom, The Works, and VIP Monthly Membership.",
+  openGraph: {
+    title: "Services & Pricing | Pawsome & Co.",
+    description:
+      "Full grooming menu with pricing for all breeds. Bath & Tidy, Full Grooms, Puppy's First Groom, The Works, and VIP Monthly Membership.",
+    url: "https://doggroomer.netlify.app/services",
+    siteName: "Pawsome & Co.",
+  },
 };
 
 export default function ServicesPage() {

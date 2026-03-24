@@ -7,6 +7,13 @@ export const metadata: Metadata = {
   title: "About Us",
   description:
     "Meet the team behind Balmain's favourite dog grooming studio. Founded in 2019 by Sophie Chen, Pawsome & Co. treats every dog like family.",
+  openGraph: {
+    title: "About Us | Pawsome & Co.",
+    description:
+      "Meet the team behind Balmain's favourite dog grooming studio. Founded in 2019 by Sophie Chen, Pawsome & Co. treats every dog like family.",
+    url: "https://doggroomer.netlify.app/about",
+    siteName: "Pawsome & Co.",
+  },
 };
 
 export default function AboutPage() {

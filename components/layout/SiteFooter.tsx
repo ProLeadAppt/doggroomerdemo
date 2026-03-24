@@ -21,6 +21,7 @@ export function SiteFooter() {
   const [emailSubmitted, setEmailSubmitted] = useState(false);
   const [newsletterEmail, setNewsletterEmail] = useState("");
   const [newsletterSubmitting, setNewsletterSubmitting] = useState(false);
+  const [newsletterError, setNewsletterError] = useState("");
 
   useEffect(() => {
     const handler = () => setShowScrollTop(window.scrollY > 500);
@@ -85,15 +86,20 @@ export function SiteFooter() {
                     onSubmit={async (e) => {
                       e.preventDefault();
                       setNewsletterSubmitting(true);
+                      setNewsletterError("");
                       try {
                         const res = await fetch("/api/newsletter", {
                           method: "POST",
                           headers: { "Content-Type": "application/json" },
                           body: JSON.stringify({ email: newsletterEmail }),
                         });
-                        if (res.ok) setEmailSubmitted(true);
+                        if (res.ok) {
+                          setEmailSubmitted(true);
+                        } else {
+                          setNewsletterError("Something went wrong. Please try again.");
+                        }
                       } catch {
-                        // Silently fail for newsletter - non-critical
+                        setNewsletterError("Unable to subscribe right now. Please try again later.");
                       } finally {
                         setNewsletterSubmitting(false);
                       }
@@ -116,6 +122,9 @@ export function SiteFooter() {
                       <Send className="h-3.5 w-3.5 text-white" />
                     </button>
                   </form>
+                )}
+                {newsletterError && (
+                  <p className="text-xs text-pw-terracotta-300 mt-2">{newsletterError}</p>
                 )}
               </div>
 

@@ -7,6 +7,13 @@ export const metadata: Metadata = {
   title: "Book a Groom",
   description:
     "Book your dog's next grooming appointment online. Select a service, pick a time, and we'll take care of the rest.",
+  openGraph: {
+    title: "Book a Groom | Pawsome & Co.",
+    description:
+      "Book your dog's next grooming appointment online. Select a service, pick a time, and we'll take care of the rest.",
+    url: "https://doggroomer.netlify.app/booking",
+    siteName: "Pawsome & Co.",
+  },
 };
 
 export default function BookingPage() {

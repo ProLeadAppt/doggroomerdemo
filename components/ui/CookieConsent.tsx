@@ -3,6 +3,12 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+/** Check if user has accepted cookie consent */
+export function hasConsent(): boolean {
+  if (typeof window === "undefined") return false;
+  return localStorage.getItem("pw-cookie-consent") === "accepted";
+}
+
 export function CookieConsent() {
   const [visible, setVisible] = useState(false);
 
@@ -15,13 +21,21 @@ export function CookieConsent() {
     }
   }, []);
 
+  const dispatchConsentEvent = (consented: boolean) => {
+    window.dispatchEvent(
+      new CustomEvent("cookie-consent-update", { detail: { consented } })
+    );
+  };
+
   const accept = () => {
     localStorage.setItem("pw-cookie-consent", "accepted");
+    dispatchConsentEvent(true);
     setVisible(false);
   };
 
   const decline = () => {
     localStorage.setItem("pw-cookie-consent", "declined");
+    dispatchConsentEvent(false);
     setVisible(false);
   };
 

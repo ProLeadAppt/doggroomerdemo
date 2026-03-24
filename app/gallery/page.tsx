@@ -7,6 +7,13 @@ export const metadata: Metadata = {
   title: "Gallery",
   description:
     "See the Pawsome difference. Before & after transformations, breed-specific grooms, and happy pups from our Balmain studio.",
+  openGraph: {
+    title: "Gallery | Pawsome & Co.",
+    description:
+      "See the Pawsome difference. Before & after transformations, breed-specific grooms, and happy pups from our Balmain studio.",
+    url: "https://doggroomer.netlify.app/gallery",
+    siteName: "Pawsome & Co.",
+  },
 };
 
 export default function GalleryPage() {
