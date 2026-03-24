@@ -1,26 +1,18 @@
 "use client";
+import dynamic from "next/dynamic";
 
-import { useEffect, useState } from "react";
-import { SmoothScroll } from "../motion/SmoothScroll";
-import { GrainOverlay } from "../ui/GrainOverlay";
-import { Preloader } from "../motion/Preloader";
-import { CustomCursor } from "../motion/CustomCursor";
-import { CookieConsent } from "../ui/CookieConsent";
+const CustomCursor = dynamic(
+  () => import("@/components/motion/CustomCursor").then((m) => m.CustomCursor),
+  { ssr: false }
+);
+const CookieConsent = dynamic(
+  () => import("@/components/ui/CookieConsent").then((m) => m.CookieConsent),
+  { ssr: false }
+);
 
-export function ClientSideEffects() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return <Preloader />;
-
+export default function ClientSideEffects() {
   return (
     <>
-      <SmoothScroll />
-      <GrainOverlay />
-      <Preloader />
       <CustomCursor />
       <CookieConsent />
     </>

@@ -1,23 +1,26 @@
 import type { Metadata, Viewport } from "next";
 import { Quicksand, DM_Sans, Pacifico } from "next/font/google";
-import { ClientSideEffects } from "@/components/layout/ClientSideEffects";
+import ClientSideEffects from "@/components/layout/ClientSideEffects";
 import "./globals.css";
 
 const displayFont = Quicksand({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["500", "700"],
+  display: "swap",
   variable: "--font-display",
 });
 
 const bodyFont = DM_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["400", "500"],
+  display: "swap",
   variable: "--font-body",
 });
 
 const scriptFont = Pacifico({
   subsets: ["latin"],
   weight: "400",
+  display: "swap",
   variable: "--font-script",
 });
 
