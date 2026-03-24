@@ -11,17 +11,18 @@ import {
   Dog,
   User,
   ClipboardCheck,
+  Star,
+  ShieldCheck,
 } from "lucide-react";
 import { PageHero } from "../sections/PageHero";
 import { Section } from "../layout/Section";
 import { Button } from "../ui/Button";
 import { FormInput } from "../ui/FormInput";
-import { services } from "../../data/site";
+import { services, conversionData } from "../../data/site";
 
 const steps = [
   { label: "Service", icon: ClipboardCheck },
   { label: "Your Dog", icon: Dog },
-  { label: "Date & Time", icon: Calendar },
   { label: "Your Details", icon: User },
   { label: "Confirm", icon: Check },
 ];
@@ -40,7 +41,7 @@ const breeds = [
 
 export function BookingPageContent() {
   const [step, setStep] = useState(0);
-  const [selectedService, setSelectedService] = useState("");
+  const [selectedService, setSelectedService] = useState("the-works");
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
   const [dogName, setDogName] = useState("");
@@ -57,9 +58,8 @@ export function BookingPageContent() {
   const canProceed = () => {
     switch (step) {
       case 0: return !!selectedService;
-      case 1: return !!dogName && !!breed && !!dogSize;
-      case 2: return !!selectedDate && !!selectedTime;
-      case 3: return !!ownerName && !!email && !!phone;
+      case 1: return !!dogName && !!breed;
+      case 2: return !!ownerName && !!phone;
       default: return true;
     }
   };
@@ -90,6 +90,18 @@ export function BookingPageContent() {
       />
 
       <Section noDivider>
+        {/* Trust signals at top */}
+        <div className="max-w-2xl mx-auto mb-6 flex flex-wrap items-center justify-center gap-4 text-sm text-pw-muted">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-pw-terracotta/10 px-3 py-1 text-xs font-semibold text-pw-terracotta">
+            <ShieldCheck className="h-3.5 w-3.5" />
+            {conversionData.spotsLeftThisWeek} spots left this week
+          </span>
+          <span className="inline-flex items-center gap-1">
+            <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
+            4.9 &middot; {conversionData.totalGrooms.toLocaleString()}+ happy grooms
+          </span>
+        </div>
+
         {/* Progress bar */}
         <div className="mb-12">
           <div className="flex items-center justify-between max-w-2xl mx-auto">
@@ -133,27 +145,74 @@ export function BookingPageContent() {
             {confirmed ? (
               <motion.div
                 key="confirmed"
-                initial={{ opacity: 0, scale: 0.95 }}
+                initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
+                transition={{ type: "spring", stiffness: 200, damping: 20 }}
                 className="text-center py-12"
               >
-                <div className="w-20 h-20 rounded-full bg-pw-sage/10 border border-pw-sage/30 flex items-center justify-center mx-auto mb-6">
-                  <Check className="h-10 w-10 text-pw-sage" />
+                {/* Animated checkmark */}
+                <div className="w-20 h-20 rounded-full bg-pw-sage/10 border-2 border-pw-sage/30 flex items-center justify-center mx-auto mb-6">
+                  <svg
+                    className="h-10 w-10 text-pw-sage"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2.5}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <motion.path
+                      d="M4 12 L9 17 L20 6"
+                      initial={{ pathLength: 0 }}
+                      animate={{ pathLength: 1 }}
+                      transition={{ duration: 0.5, delay: 0.2 }}
+                    />
+                  </svg>
                 </div>
-                <h2 className="font-display text-display-lg text-pw-charcoal">
-                  Booking confirmed!
-                </h2>
+
+                <motion.h2
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.3 }}
+                  className="font-display text-display-lg text-pw-charcoal"
+                >
+                  You&rsquo;re Booked!
+                </motion.h2>
+
                 <p className="mt-3 text-pw-muted max-w-md mx-auto">
-                  Your booking request has been received. We&rsquo;ll confirm
-                  via SMS to your phone within the hour.
+                  Your booking request has been received. Here&rsquo;s a summary.
                 </p>
+
+                {/* Booking summary */}
                 <div className="mt-6 rounded-xl border border-pw-border bg-white p-5 text-left max-w-sm mx-auto space-y-2">
                   <p className="text-sm"><strong>Service:</strong> {selectedServiceData?.name}</p>
                   <p className="text-sm"><strong>Dog:</strong> {dogName} ({breed})</p>
-                  <p className="text-sm"><strong>Date:</strong> {selectedDate}</p>
-                  <p className="text-sm"><strong>Time:</strong> {selectedTime}</p>
+                  {selectedDate && <p className="text-sm"><strong>Date:</strong> {selectedDate}</p>}
+                  {selectedTime && <p className="text-sm"><strong>Time:</strong> {selectedTime}</p>}
+                  <p className="text-sm"><strong>Owner:</strong> {ownerName}</p>
+                  <p className="text-sm"><strong>Phone:</strong> {phone}</p>
                 </div>
-                <p className="mt-6 font-script text-lg text-pw-terracotta">
+
+                {/* What happens next */}
+                <div className="mt-8 max-w-sm mx-auto text-left">
+                  <h3 className="font-display text-sm font-bold text-pw-charcoal mb-3">What happens next</h3>
+                  <ol className="space-y-3">
+                    {[
+                      { num: "1", text: "Confirmation SMS within 2 hours" },
+                      { num: "2", text: "Reminder 24 hours before your appointment" },
+                      { num: "3", text: "Bring your pup and we\u2019ll handle the rest!" },
+                    ].map((item) => (
+                      <li key={item.num} className="flex items-start gap-3">
+                        <span className="flex-shrink-0 w-6 h-6 rounded-full bg-pw-sage/10 text-pw-sage text-xs font-bold flex items-center justify-center">
+                          {item.num}
+                        </span>
+                        <span className="text-sm text-pw-muted">{item.text}</span>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+
+                <p className="mt-8 font-script text-lg text-pw-terracotta">
                   We can&rsquo;t wait to meet {dogName}!
                 </p>
               </motion.div>
@@ -213,10 +272,14 @@ export function BookingPageContent() {
                         </button>
                       ))}
                     </div>
+                    {/* Price estimate */}
+                    <p className="text-sm text-pw-sage font-medium mt-2">
+                      Estimated price: from {selectedServiceData?.price ?? "\u2014"}
+                    </p>
                   </div>
                 )}
 
-                {/* Step 1: Dog Details */}
+                {/* Step 1: Dog Details + Optional Date/Time */}
                 {step === 1 && (
                   <div>
                     <h2 className="font-display text-xl font-bold text-pw-charcoal mb-6">
@@ -225,7 +288,7 @@ export function BookingPageContent() {
                     <div className="space-y-4">
                       <FormInput
                         label="Dog's Name"
-                        placeholder="e.g. Luna"
+                        placeholder=" "
                         value={dogName}
                         onChange={(e) => setDogName((e.target as HTMLInputElement).value)}
                       />
@@ -238,94 +301,98 @@ export function BookingPageContent() {
                       />
                       <FormInput
                         as="select"
-                        label="Size"
+                        label="Size (Optional)"
                         value={dogSize}
                         onChange={(e) => setDogSize((e.target as HTMLSelectElement).value)}
                         options={[
                           { value: "small", label: "Small (under 10kg)" },
-                          { value: "medium", label: "Medium (10–25kg)" },
+                          { value: "medium", label: "Medium (10\u201325kg)" },
                           { value: "large", label: "Large (25kg+)" },
                         ]}
                       />
                       <FormInput
                         as="textarea"
-                        label="Special Notes (optional)"
-                        placeholder="Anything we should know? Skin conditions, anxiety, preferred style..."
+                        label="Special Notes (Optional)"
+                        placeholder=" "
                         value={notes}
                         onChange={(e) => setNotes((e.target as HTMLTextAreaElement).value)}
                       />
+
+                      {/* Optional date/time section */}
+                      <div className="pt-4 border-t border-pw-border">
+                        <p className="text-sm font-medium text-pw-charcoal mb-1">
+                          Preferred Date &amp; Time{" "}
+                          <span className="text-pw-muted font-normal">(Optional)</span>
+                        </p>
+                        <p className="text-xs text-pw-muted mb-4">
+                          Skip this and we&rsquo;ll find the next available slot for you.
+                        </p>
+
+                        {/* Date grid */}
+                        <div className="grid grid-cols-3 sm:grid-cols-7 gap-2 mb-4">
+                          {dates.map((d) => {
+                            const label = d.toLocaleDateString("en-AU", {
+                              weekday: "short",
+                              day: "numeric",
+                              month: "short",
+                            });
+                            const isSat = d.getDay() === 6;
+                            return (
+                              <button
+                                key={label}
+                                onClick={() =>
+                                  setSelectedDate(selectedDate === label ? "" : label)
+                                }
+                                className={`rounded-lg p-2 text-center text-xs transition-all duration-200 ${
+                                  selectedDate === label
+                                    ? "bg-pw-teal text-white shadow-glow-sage"
+                                    : "bg-white border border-pw-border hover:border-pw-sage/30"
+                                }`}
+                              >
+                                <span className="block font-medium">
+                                  {d.toLocaleDateString("en-AU", { weekday: "short" })}
+                                </span>
+                                <span className="block text-lg font-bold mt-0.5">
+                                  {d.getDate()}
+                                </span>
+                                <span className="block text-[10px] opacity-70">
+                                  {d.toLocaleDateString("en-AU", { month: "short" })}
+                                </span>
+                                {isSat && (
+                                  <span className="block text-[8px] mt-0.5 opacity-50">
+                                    til 3pm
+                                  </span>
+                                )}
+                              </button>
+                            );
+                          })}
+                        </div>
+
+                        {/* Time slots */}
+                        <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
+                          {timeSlots.map((time) => (
+                            <button
+                              key={time}
+                              onClick={() =>
+                                setSelectedTime(selectedTime === time ? "" : time)
+                              }
+                              className={`rounded-lg py-2.5 px-3 text-sm font-medium transition-all duration-200 ${
+                                selectedTime === time
+                                  ? "bg-pw-terracotta text-white"
+                                  : "bg-white border border-pw-border hover:border-pw-terracotta/30"
+                              }`}
+                            >
+                              {time}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 )}
 
-                {/* Step 2: Date & Time */}
+                {/* Step 2: Contact details */}
                 {step === 2 && (
-                  <div>
-                    <h2 className="font-display text-xl font-bold text-pw-charcoal mb-6">
-                      Pick a date and time
-                    </h2>
-
-                    {/* Date grid */}
-                    <p className="text-sm font-medium text-pw-charcoal mb-3">Date</p>
-                    <div className="grid grid-cols-3 sm:grid-cols-7 gap-2 mb-8">
-                      {dates.map((d) => {
-                        const label = d.toLocaleDateString("en-AU", {
-                          weekday: "short",
-                          day: "numeric",
-                          month: "short",
-                        });
-                        const isSat = d.getDay() === 6;
-                        return (
-                          <button
-                            key={label}
-                            onClick={() => setSelectedDate(label)}
-                            className={`rounded-lg p-2 text-center text-xs transition-all duration-200 ${
-                              selectedDate === label
-                                ? "bg-pw-teal text-white shadow-glow-sage"
-                                : "bg-white border border-pw-border hover:border-pw-sage/30"
-                            }`}
-                          >
-                            <span className="block font-medium">
-                              {d.toLocaleDateString("en-AU", { weekday: "short" })}
-                            </span>
-                            <span className="block text-lg font-bold mt-0.5">
-                              {d.getDate()}
-                            </span>
-                            <span className="block text-[10px] opacity-70">
-                              {d.toLocaleDateString("en-AU", { month: "short" })}
-                            </span>
-                            {isSat && (
-                              <span className="block text-[8px] mt-0.5 opacity-50">
-                                til 3pm
-                              </span>
-                            )}
-                          </button>
-                        );
-                      })}
-                    </div>
-
-                    {/* Time slots */}
-                    <p className="text-sm font-medium text-pw-charcoal mb-3">Time</p>
-                    <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
-                      {timeSlots.map((time) => (
-                        <button
-                          key={time}
-                          onClick={() => setSelectedTime(time)}
-                          className={`rounded-lg py-2.5 px-3 text-sm font-medium transition-all duration-200 ${
-                            selectedTime === time
-                              ? "bg-pw-terracotta text-white"
-                              : "bg-white border border-pw-border hover:border-pw-terracotta/30"
-                          }`}
-                        >
-                          {time}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Step 3: Contact details */}
-                {step === 3 && (
                   <div>
                     <h2 className="font-display text-xl font-bold text-pw-charcoal mb-6">
                       Your contact details
@@ -333,30 +400,35 @@ export function BookingPageContent() {
                     <div className="space-y-4">
                       <FormInput
                         label="Your Name"
-                        placeholder="e.g. Sarah Mitchell"
+                        placeholder=" "
                         value={ownerName}
                         onChange={(e) => setOwnerName((e.target as HTMLInputElement).value)}
                       />
                       <FormInput
-                        label="Email"
-                        type="email"
-                        placeholder="e.g. sarah@email.com"
-                        value={email}
-                        onChange={(e) => setEmail((e.target as HTMLInputElement).value)}
-                      />
-                      <FormInput
                         label="Phone"
                         type="tel"
-                        placeholder="e.g. 0412 345 678"
+                        placeholder=" "
                         value={phone}
                         onChange={(e) => setPhone((e.target as HTMLInputElement).value)}
                       />
+                      <FormInput
+                        label="Email (Optional)"
+                        type="email"
+                        placeholder=" "
+                        value={email}
+                        onChange={(e) => setEmail((e.target as HTMLInputElement).value)}
+                      />
                     </div>
+
+                    {/* Inline trust signals */}
+                    <p className="mt-5 text-center text-xs text-pw-muted">
+                      Free cancellation &middot; Confirmed within 2 hours &middot; No payment required
+                    </p>
                   </div>
                 )}
 
-                {/* Step 4: Summary */}
-                {step === 4 && (
+                {/* Step 3: Summary */}
+                {step === 3 && (
                   <div>
                     <h2 className="font-display text-xl font-bold text-pw-charcoal mb-6">
                       Review your booking
@@ -390,17 +462,22 @@ export function BookingPageContent() {
                         <div>
                           <p className="text-pw-muted text-xs uppercase tracking-wider">Dog</p>
                           <p className="font-medium mt-0.5">{dogName}</p>
-                          <p className="text-pw-muted text-xs">{breed} &middot; {dogSize}</p>
+                          <p className="text-pw-muted text-xs">
+                            {breed}
+                            {dogSize ? ` \u00b7 ${dogSize}` : ""}
+                          </p>
                         </div>
-                        <div>
-                          <p className="text-pw-muted text-xs uppercase tracking-wider">When</p>
-                          <p className="font-medium mt-0.5">{selectedDate}</p>
-                          <p className="text-pw-muted text-xs">{selectedTime}</p>
-                        </div>
+                        {(selectedDate || selectedTime) && (
+                          <div>
+                            <p className="text-pw-muted text-xs uppercase tracking-wider">When</p>
+                            <p className="font-medium mt-0.5">{selectedDate || "Next available"}</p>
+                            <p className="text-pw-muted text-xs">{selectedTime || "Any time"}</p>
+                          </div>
+                        )}
                         <div>
                           <p className="text-pw-muted text-xs uppercase tracking-wider">Owner</p>
                           <p className="font-medium mt-0.5">{ownerName}</p>
-                          <p className="text-pw-muted text-xs">{email}</p>
+                          {email && <p className="text-pw-muted text-xs">{email}</p>}
                         </div>
                         <div>
                           <p className="text-pw-muted text-xs uppercase tracking-wider">Phone</p>

@@ -61,15 +61,15 @@ export function ContactPageContent() {
                   className="space-y-4"
                 >
                   <div className="grid gap-4 sm:grid-cols-2">
-                    <FormInput label="Your Name" placeholder="e.g. Sarah Mitchell" required />
-                    <FormInput label="Phone" type="tel" placeholder="e.g. 0412 345 678" required />
+                    <FormInput label="Your Name" placeholder=" " required />
+                    <FormInput label="Phone" type="tel" placeholder=" " required />
                   </div>
-                  <FormInput label="Email" type="email" placeholder="e.g. sarah@email.com" required />
-                  <FormInput label="Dog's Name & Breed" placeholder="e.g. Luna, Cavoodle" />
+                  <FormInput label="Email" type="email" placeholder=" " required />
+                  <FormInput label="Dog's Name & Breed" placeholder=" " />
                   <FormInput
                     as="textarea"
                     label="Message"
-                    placeholder="How can we help?"
+                    placeholder=" "
                     required
                   />
                   <Button type="submit" fullWidth>
