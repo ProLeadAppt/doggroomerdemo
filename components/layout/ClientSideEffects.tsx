@@ -10,6 +10,8 @@ const CookieConsent = dynamic(
   () => import("@/components/ui/CookieConsent").then((m) => m.CookieConsent),
   { ssr: false }
 );
+const StickyMobileCTA = dynamic(() => import("@/components/conversion/StickyMobileCTA"), { ssr: false });
+const ExitIntent = dynamic(() => import("@/components/conversion/ExitIntent"), { ssr: false });
 
 export default function ClientSideEffects() {
   const [isDesktopNonTouch, setIsDesktopNonTouch] = useState(false);
@@ -26,6 +28,8 @@ export default function ClientSideEffects() {
     <>
       {isDesktopNonTouch && <CustomCursor />}
       <CookieConsent />
+      <StickyMobileCTA />
+      <ExitIntent />
     </>
   );
 }
