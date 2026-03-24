@@ -8,16 +8,35 @@ import { Button } from "../ui/Button";
 import { MagneticButton } from "../motion/MagneticButton";
 import { navLinks } from "../../data/site";
 
+const mobileMenuVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.08 },
+  },
+  exit: { opacity: 0 },
+};
+
+const mobileItemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
+
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
+  const [ctaFilled, setCtaFilled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [hoveredNav, setHoveredNav] = useState<string | null>(null);
 
   // Scroll progress indicator
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 40);
+    const handler = () => {
+      setScrolled(window.scrollY > 50);
+      setCtaFilled(window.scrollY > 100);
+    };
     window.addEventListener("scroll", handler, { passive: true });
     return () => window.removeEventListener("scroll", handler);
   }, []);
@@ -30,7 +49,7 @@ export function SiteHeader() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-white/85 backdrop-blur-xl border-b border-pw-border/50 shadow-pw"
+            ? "bg-white/85 backdrop-blur-lg border-b border-pw-border/50 shadow-pw"
             : "bg-transparent border-b border-transparent"
         }`}
       >
@@ -51,18 +70,32 @@ export function SiteHeader() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden items-center gap-8 lg:flex">
+          <nav
+            className="hidden items-center gap-8 lg:flex"
+            onMouseLeave={() => setHoveredNav(null)}
+          >
             {navLinks.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
-                className="relative text-xs font-medium tracking-[0.12em] uppercase text-pw-muted transition-colors hover:text-pw-charcoal after:absolute after:-bottom-1 after:left-0 after:h-[1px] after:w-0 after:bg-pw-terracotta after:transition-all after:duration-300 hover:after:w-full"
+                onMouseEnter={() => setHoveredNav(item.label)}
+                className="relative text-xs font-medium tracking-[0.12em] uppercase text-pw-muted transition-colors hover:text-pw-charcoal py-1"
               >
                 {item.label}
+                {hoveredNav === item.label && (
+                  <motion.div
+                    layoutId="nav-underline"
+                    className="absolute -bottom-0.5 left-0 right-0 h-[2px] bg-pw-terracotta rounded-full"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
               </Link>
             ))}
             <MagneticButton>
-              <Button asChild>
+              <Button
+                asChild
+                variant={ctaFilled ? "primary" : "ghost"}
+              >
                 <Link href="/booking">Book a Groom</Link>
               </Button>
             </MagneticButton>
@@ -91,7 +124,7 @@ export function SiteHeader() {
         </div>
         {/* Scroll progress indicator */}
         <motion.div
-          className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-pw-sage via-pw-teal to-pw-terracotta origin-left"
+          className="absolute bottom-0 left-0 right-0 h-[2px] bg-pw-sage origin-left"
           style={{ scaleX, opacity: scrolled ? 1 : 0 }}
         />
       </motion.header>
@@ -100,22 +133,18 @@ export function SiteHeader() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={mobileMenuVariants}
             role="dialog"
             aria-modal="true"
             aria-label="Navigation menu"
             className="fixed inset-0 z-40 bg-pw-cream/98 backdrop-blur-xl lg:hidden"
           >
             <nav className="flex flex-col items-center justify-center h-full gap-8">
-              {navLinks.map((item, i) => (
-                <motion.div
-                  key={item.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.08 }}
-                >
+              {navLinks.map((item) => (
+                <motion.div key={item.label} variants={mobileItemVariants}>
                   <Link
                     href={item.href}
                     onClick={() => setMobileOpen(false)}
@@ -125,11 +154,7 @@ export function SiteHeader() {
                   </Link>
                 </motion.div>
               ))}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: navLinks.length * 0.08 }}
-              >
+              <motion.div variants={mobileItemVariants}>
                 <Button asChild>
                   <Link href="/booking" onClick={() => setMobileOpen(false)}>
                     Book a Groom

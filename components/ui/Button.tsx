@@ -18,7 +18,7 @@ const baseClasses =
 
 const variants: Record<ButtonVariant, string> = {
   primary:
-    "bg-pw-terracotta text-white hover:bg-pw-terracotta-500 hover:shadow-glow-terracotta active:scale-[0.97]",
+    "bg-pw-terracotta text-white hover:shadow-glow-terracotta active:scale-[0.97] before:absolute before:inset-0 before:rounded-full before:bg-white/20 before:scale-0 before:transition-transform before:duration-300 hover:before:scale-100 before:origin-center",
   secondary:
     "border border-pw-border text-pw-teal bg-transparent hover:bg-pw-teal/5 hover:border-pw-teal/40",
   ghost:
@@ -48,11 +48,12 @@ export function Button({
   return (
     <Comp
       whileHover={{ y: -2 }}
-      whileTap={{ scale: 0.96 }}
+      whileTap={{ scale: 0.95 }}
+      transition={{ type: "spring", stiffness: 400, damping: 17 }}
       className={classes}
       {...(props as ComponentProps<typeof Comp>)}
     >
-      {children}
+      <span className="relative z-10">{children}</span>
     </Comp>
   );
 }
