@@ -112,11 +112,13 @@ export function SiteFooter() {
                       required
                       value={newsletterEmail}
                       onChange={(e) => setNewsletterEmail(e.target.value)}
+                      aria-label="Email address"
                       className="flex-1 min-w-0 rounded-full bg-white/10 border border-white/10 px-4 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-pw-sage/50 transition-colors"
                     />
                     <button
                       type="submit"
                       disabled={newsletterSubmitting}
+                      aria-label="Subscribe to newsletter"
                       className="w-9 h-9 rounded-full bg-pw-sage flex items-center justify-center hover:bg-pw-sage-400 transition-colors flex-shrink-0 disabled:opacity-50"
                     >
                       <Send className="h-3.5 w-3.5 text-white" />

@@ -341,7 +341,7 @@ export function BookingPageContent() {
                         <button
                           key={time}
                           onClick={() => setSelectedTime(time)}
-                          className={`rounded-lg py-2.5 px-3 text-sm font-medium transition-[color,background-color,border-color,box-shadow] duration-200 ${
+                          className={`rounded-lg py-2.5 px-3 min-h-[44px] text-sm font-medium transition-[color,background-color,border-color,box-shadow] duration-200 ${
                             selectedTime === time
                               ? "bg-pw-terracotta text-white"
                               : "bg-white border border-pw-border hover:border-pw-terracotta/30"

@@ -131,14 +131,14 @@ export function TestimonialsSection() {
         <div className="flex justify-center gap-3 mt-8">
           <button
             onClick={() => swiperRef.current?.slidePrev()}
-            className="w-10 h-10 rounded-full border border-pw-border bg-white hover:bg-pw-elevated hover:border-pw-sage/30 transition-[background-color,border-color] flex items-center justify-center"
+            className="w-11 h-11 rounded-full border border-pw-border bg-white hover:bg-pw-elevated hover:border-pw-sage/30 transition-[background-color,border-color] flex items-center justify-center"
             aria-label="Previous review"
           >
             <ArrowLeft className="h-4 w-4 text-pw-muted" />
           </button>
           <button
             onClick={() => swiperRef.current?.slideNext()}
-            className="w-10 h-10 rounded-full border border-pw-border bg-white hover:bg-pw-elevated hover:border-pw-sage/30 transition-[background-color,border-color] flex items-center justify-center"
+            className="w-11 h-11 rounded-full border border-pw-border bg-white hover:bg-pw-elevated hover:border-pw-sage/30 transition-[background-color,border-color] flex items-center justify-center"
             aria-label="Next review"
           >
             <ArrowRight className="h-4 w-4 text-pw-muted" />

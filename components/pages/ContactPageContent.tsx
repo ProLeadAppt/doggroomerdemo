@@ -71,9 +71,9 @@ export function ContactPageContent() {
                 <div className="w-16 h-16 rounded-full bg-pw-sage/10 border border-pw-sage/30 flex items-center justify-center mx-auto mb-4">
                   <Check className="h-8 w-8 text-pw-sage" />
                 </div>
-                <h3 className="font-display text-xl font-bold text-pw-charcoal">
+                <p className="font-display text-xl font-bold text-pw-charcoal">
                   Message sent!
-                </h3>
+                </p>
                 <p className="mt-2 text-sm text-pw-muted">
                   Thanks for reaching out! We typically respond within a few hours during business hours.
                 </p>

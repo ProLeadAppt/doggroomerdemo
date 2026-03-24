@@ -22,6 +22,15 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
+  // Close mobile menu on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && mobileOpen) setMobileOpen(false);
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [mobileOpen]);
+
   return (
     <>
       <motion.header
@@ -71,7 +80,7 @@ export function SiteHeader() {
           {/* Mobile hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="flex flex-col gap-[5px] lg:hidden p-2"
+            className="flex flex-col gap-[5px] lg:hidden p-2 min-w-[44px] min-h-[44px] items-center justify-center"
             aria-label="Toggle menu"
             aria-expanded={mobileOpen}
           >
@@ -91,6 +100,7 @@ export function SiteHeader() {
         </div>
         {/* Scroll progress indicator */}
         <motion.div
+          aria-hidden="true"
           className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-pw-sage via-pw-teal to-pw-terracotta origin-left"
           style={{ scaleX, opacity: scrolled ? 1 : 0 }}
         />

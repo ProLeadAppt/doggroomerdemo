@@ -1,9 +1,21 @@
-"use client";
-
 export function GrainOverlay() {
   return (
-    <div className="fixed inset-0 z-[9999] pointer-events-none overflow-hidden">
-      <div className="noise-overlay-fixed w-[200%] h-[200%] -left-1/2 -top-1/2" />
+    <div
+      aria-hidden="true"
+      className="fixed inset-0 z-[9999] pointer-events-none"
+      style={{ opacity: 0.035 }}
+    >
+      <svg className="w-full h-full">
+        <filter id="grain-noise">
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.6"
+            numOctaves="3"
+            stitchTiles="stitch"
+          />
+        </filter>
+        <rect width="100%" height="100%" filter="url(#grain-noise)" />
+      </svg>
     </div>
   );
 }

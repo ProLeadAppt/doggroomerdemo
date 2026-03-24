@@ -15,6 +15,7 @@ import { MeetTheTeam } from "@/components/sections/MeetTheTeam";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { ScrollVelocity } from "@/components/motion/ScrollVelocity";
+import { SectionDivider } from "@/components/ui/SectionDivider";
 
 export default function HomePage() {
   return (
@@ -22,11 +23,12 @@ export default function HomePage() {
       <SchemaScript schema={getLocalBusinessSchema()} />
       <SchemaScript schema={getFAQSchema()} />
       <SiteHeader />
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         <HeroSection />
         <OfferBanner />
         <QuickInfoStrip />
         <TrustBar />
+        <SectionDivider variant="wave" color="cream" />
         <WhyPawsome />
         <ServicesOverview />
 
@@ -35,6 +37,7 @@ export default function HomePage() {
           baseVelocity={-2}
         />
 
+        <SectionDivider variant="curve" color="sage" />
         <HowItWorks />
         <BeforeAfterGallery />
 
@@ -45,6 +48,7 @@ export default function HomePage() {
 
         <TestimonialsSection />
         <MeetTheTeam />
+        <SectionDivider variant="dots" color="teal" />
         <FAQSection />
         <FinalCTA />
       </main>
