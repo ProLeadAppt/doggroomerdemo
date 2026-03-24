@@ -3,8 +3,10 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SchemaScript } from "@/components/seo/SchemaScript";
 import { getLocalBusinessSchema, getFAQSchema } from "@/lib/schema";
 import { HeroSection } from "@/components/sections/HeroSection";
+import { OfferBanner } from "@/components/sections/OfferBanner";
 import { QuickInfoStrip } from "@/components/sections/QuickInfoStrip";
 import { TrustBar } from "@/components/sections/TrustBar";
+import { WhyPawsome } from "@/components/sections/WhyPawsome";
 import { ServicesOverview } from "@/components/sections/ServicesOverview";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { BeforeAfterGallery } from "@/components/sections/BeforeAfterGallery";
@@ -22,8 +24,10 @@ export default function HomePage() {
       <SiteHeader />
       <main className="flex-1">
         <HeroSection />
+        <OfferBanner />
         <QuickInfoStrip />
         <TrustBar />
+        <WhyPawsome />
         <ServicesOverview />
 
         <ScrollVelocity

@@ -5,6 +5,7 @@ import { SmoothScroll } from "../motion/SmoothScroll";
 import { GrainOverlay } from "../ui/GrainOverlay";
 import { Preloader } from "../motion/Preloader";
 import { CustomCursor } from "../motion/CustomCursor";
+import { CookieConsent } from "../ui/CookieConsent";
 
 export function ClientSideEffects() {
   const [mounted, setMounted] = useState(false);
@@ -21,6 +22,7 @@ export function ClientSideEffects() {
       <GrainOverlay />
       <Preloader />
       <CustomCursor />
+      <CookieConsent />
     </>
   );
 }

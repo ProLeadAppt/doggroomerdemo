@@ -9,6 +9,8 @@ export type BlogArticle = {
   readTime: string;
   category: string;
   content: string;
+  ctaLabel: string;
+  ctaHref: string;
 };
 
 const articleContent: Record<string, string> = {
@@ -134,13 +136,36 @@ const articleContent: Record<string, string> = {
 `,
 };
 
+const articleCTAs: Record<string, { label: string; href: string }> = {
+  "how-often-should-you-groom-your-cavoodle": {
+    label: "Book a Cavoodle Groom",
+    href: "/booking",
+  },
+  "signs-your-dog-needs-professional-groom": {
+    label: "Book a Professional Groom",
+    href: "/booking",
+  },
+  "puppys-first-groom-what-to-expect": {
+    label: "Book Puppy\u2019s First Groom",
+    href: "/booking",
+  },
+  "best-dog-groomers-balmain": {
+    label: "Book at Pawsome & Co.",
+    href: "/booking",
+  },
+};
+
 export function getArticle(slug: string): BlogArticle | null {
   const meta = blogPosts.find((p) => p.slug === slug);
   if (!meta) return null;
 
+  const cta = articleCTAs[slug] || { label: "Book a Groom", href: "/booking" };
+
   return {
     ...meta,
     content: articleContent[slug] || "",
+    ctaLabel: cta.label,
+    ctaHref: cta.href,
   };
 }
 

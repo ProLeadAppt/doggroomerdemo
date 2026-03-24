@@ -55,7 +55,7 @@ export function HeroSection() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 4, duration: 1.5 }}
+        transition={{ delay: 2, duration: 1.5 }}
         className="absolute right-[10%] top-[20%] z-[2] hidden lg:block"
       >
         <motion.div
@@ -69,7 +69,7 @@ export function HeroSection() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 4.5, duration: 1.5 }}
+        transition={{ delay: 2.5, duration: 1.5 }}
         className="absolute left-[5%] bottom-[25%] z-[2] hidden lg:block"
       >
         <motion.div
@@ -92,7 +92,7 @@ export function HeroSection() {
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 2.2, duration: 0.5, ease: "easeOut" }}
+              transition={{ delay: 0.3, duration: 0.5, ease: "easeOut" }}
             >
               <Badge tone="gold">Est. {brand.established} &middot; {brand.suburb}</Badge>
             </motion.div>
@@ -108,7 +108,7 @@ export function HeroSection() {
                         initial={{ y: "110%", opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{
-                          delay: 2.4 + wi * 0.12 + ci * 0.03,
+                          delay: 0.5 + wi * 0.08 + ci * 0.02,
                           duration: 0.5,
                           ease: [0.22, 1, 0.36, 1],
                         }}
@@ -121,11 +121,21 @@ export function HeroSection() {
               ))}
             </h1>
 
+            {/* Script tagline */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.0, duration: 0.6 }}
+              className="mt-3 font-script text-xl sm:text-2xl text-pw-amber-200"
+            >
+              {hero.tagline}
+            </motion.p>
+
             {/* Animated accent line */}
             <motion.div
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
-              transition={{ delay: 3.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ delay: 1.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               className="mt-4 h-[2px] w-24 origin-left bg-gradient-to-r from-pw-terracotta to-pw-amber"
             />
 
@@ -133,7 +143,7 @@ export function HeroSection() {
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 3.4, duration: 0.6 }}
+              transition={{ delay: 1.4, duration: 0.6 }}
               className="mt-5 text-lg text-white/75 leading-relaxed max-w-lg"
             >
               {hero.subheadline}
@@ -143,7 +153,7 @@ export function HeroSection() {
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 3.6, duration: 0.6 }}
+              transition={{ delay: 1.6, duration: 0.6 }}
               className="mt-8 flex flex-wrap gap-4"
             >
               <Link
@@ -171,7 +181,7 @@ export function HeroSection() {
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 3.8, duration: 0.8 }}
+            transition={{ delay: 1.8, duration: 0.8 }}
             className="mt-6 text-xs tracking-[0.15em] uppercase text-white/40 pl-2"
           >
             {hero.trustLine}
@@ -183,7 +193,7 @@ export function HeroSection() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 4.5, duration: 1 }}
+        transition={{ delay: 2.5, duration: 1 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
       >
         <span className="text-[9px] tracking-[0.3em] uppercase text-white/30">

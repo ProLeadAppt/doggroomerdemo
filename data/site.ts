@@ -49,9 +49,10 @@ export const brand: Brand = {
 };
 
 export const hero = {
-  headline: "Where every dog leaves happy.",
+  headline: "Premium Dog Grooming in Balmain",
   subheadline:
-    "Premium grooming, gentle hands, and tail-wagging results at Balmain\u2019s favourite dog grooming studio.",
+    "Gentle hands, expert grooming, and tail-wagging results at Balmain\u2019s favourite dog grooming studio.",
+  tagline: "Where every dog leaves happy.",
   primaryCtaLabel: "Book a Groom",
   secondaryCtaLabel: "Call Us",
   trustLine: `${brand.googleRating} Stars \u00b7 ${brand.reviewCount} Reviews \u00b7 Est. ${brand.established} \u00b7 ${brand.suburb}`,

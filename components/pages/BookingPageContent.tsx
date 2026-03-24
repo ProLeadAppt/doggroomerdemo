@@ -144,8 +144,8 @@ export function BookingPageContent() {
                   Booking confirmed!
                 </h2>
                 <p className="mt-3 text-pw-muted max-w-md mx-auto">
-                  We&rsquo;ve sent a confirmation to <strong>{email}</strong>.
-                  You&rsquo;ll receive a reminder SMS 24 hours before your appointment.
+                  Your booking request has been received. We&rsquo;ll confirm
+                  via SMS to your phone within the hour.
                 </p>
                 <div className="mt-6 rounded-xl border border-pw-border bg-white p-5 text-left max-w-sm mx-auto space-y-2">
                   <p className="text-sm"><strong>Service:</strong> {selectedServiceData?.name}</p>
@@ -266,7 +266,7 @@ export function BookingPageContent() {
 
                     {/* Date grid */}
                     <p className="text-sm font-medium text-pw-charcoal mb-3">Date</p>
-                    <div className="grid grid-cols-4 sm:grid-cols-7 gap-2 mb-8">
+                    <div className="grid grid-cols-3 sm:grid-cols-7 gap-2 mb-8">
                       {dates.map((d) => {
                         const label = d.toLocaleDateString("en-AU", {
                           weekday: "short",

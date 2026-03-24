@@ -73,6 +73,7 @@ export function SiteHeader() {
             onClick={() => setMobileOpen(!mobileOpen)}
             className="flex flex-col gap-[5px] lg:hidden p-2"
             aria-label="Toggle menu"
+            aria-expanded={mobileOpen}
           >
             <motion.span
               animate={mobileOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
@@ -102,6 +103,9 @@ export function SiteHeader() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navigation menu"
             className="fixed inset-0 z-40 bg-pw-cream/98 backdrop-blur-xl lg:hidden"
           >
             <nav className="flex flex-col items-center justify-center h-full gap-8">

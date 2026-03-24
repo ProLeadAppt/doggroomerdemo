@@ -45,7 +45,7 @@ export function ContactPageContent() {
                   Message sent!
                 </h3>
                 <p className="mt-2 text-sm text-pw-muted">
-                  We&rsquo;ll get back to you within a few hours. In the meantime, feel free to give us a call.
+                  Thanks for reaching out! We typically respond within a few hours during business hours.
                 </p>
               </motion.div>
             ) : (

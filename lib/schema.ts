@@ -72,6 +72,47 @@ export function getServiceSchema() {
   }));
 }
 
+export function getArticleSchema(article: {
+  title: string;
+  excerpt: string;
+  date: string;
+  image: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.excerpt,
+    image: article.image,
+    datePublished: article.date,
+    author: {
+      "@type": "Organization",
+      name: brand.name,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: brand.name,
+      logo: {
+        "@type": "ImageObject",
+        url: "https://doggroomer.netlify.app/favicon.svg",
+      },
+    },
+  };
+}
+
+export function getBreadcrumbSchema(items: { name: string; url: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.name,
+      item: item.url,
+    })),
+  };
+}
+
 export function getFAQSchema() {
   return {
     "@context": "https://schema.org",

@@ -142,7 +142,7 @@ export function ReviewsPageContent() {
               Join {brand.reviewCount} happy dog owners and leave us a review. It takes 30 seconds and means the world.
             </p>
             <Button variant="accent" asChild>
-              <Link href="#" target="_blank">
+              <Link href="https://g.page/pawsomeandco/review" target="_blank" rel="noopener noreferrer">
                 Leave a Google Review
                 <ExternalLink className="ml-2 h-4 w-4" />
               </Link>
