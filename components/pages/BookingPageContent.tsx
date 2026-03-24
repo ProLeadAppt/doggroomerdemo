@@ -185,8 +185,9 @@ export function BookingPageContent() {
                           <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
                             <Image
                               src={service.image}
-                              alt={service.name}
+                              alt={`Professional ${service.name} grooming at Pawsome & Co.`}
                               fill
+                              sizes="64px"
                               className="object-cover"
                             />
                           </div>
@@ -305,7 +306,7 @@ export function BookingPageContent() {
 
                     {/* Time slots */}
                     <p className="text-sm font-medium text-pw-charcoal mb-3">Time</p>
-                    <div className="grid grid-cols-4 sm:grid-cols-6 gap-2">
+                    <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
                       {timeSlots.map((time) => (
                         <button
                           key={time}
@@ -366,8 +367,9 @@ export function BookingPageContent() {
                           <div className="relative w-14 h-14 rounded-lg overflow-hidden flex-shrink-0">
                             <Image
                               src={selectedServiceData.image}
-                              alt={selectedServiceData.name}
+                              alt={`Professional ${selectedServiceData.name} grooming at Pawsome & Co.`}
                               fill
+                              sizes="56px"
                               className="object-cover"
                             />
                           </div>
