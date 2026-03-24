@@ -2,210 +2,142 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import { Phone } from "lucide-react";
-import { Badge } from "../ui/Badge";
-import { PawIcon } from "../ui/PawIcon";
-import { hero, brand } from "../../data/site";
+import { Badge } from "@/components/ui/Badge";
+import { Button } from "@/components/ui/Button";
+import { hero, brand } from "@/data/site";
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const easing = [0.22, 1, 0.36, 1] as [number, number, number, number];
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: easing,
+    },
+  },
+};
+
+const imageVariants = {
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.8,
+      delay: 0.3,
+      ease: easing,
+    },
+  },
+};
 
 export function HeroSection() {
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-
-  // Parallax: image moves slower than scroll
-  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
-  const overlayOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0.3]);
-
-  // Split headline into characters for per-character animation
-  const words = hero.headline.split(" ");
-  const chars = words.map((word) => word.split(""));
-
   return (
     <section
-      ref={ref}
-      className="relative min-h-screen flex items-center overflow-hidden"
+      className="relative min-h-[90vh] flex items-center overflow-hidden"
+      style={{
+        background:
+          "radial-gradient(ellipse 80% 60% at 20% 60%, hsla(100,20%,55%,0.05) 0%, transparent 60%), radial-gradient(ellipse 60% 50% at 80% 30%, hsla(20,55%,55%,0.05) 0%, transparent 60%)",
+      }}
     >
-      {/* Parallax background image */}
-      <motion.div className="absolute inset-0 z-0" style={{ y: imageY }}>
-        <Image
-          src={hero.image}
-          alt="Professional dog grooming at Pawsome and Co studio in Balmain Sydney"
-          fill
-          sizes="100vw"
-          className="object-cover scale-110"
-          priority
-        />
-      </motion.div>
-
-      {/* Sophisticated overlay stack */}
-      <motion.div className="absolute inset-0 z-[1]" style={{ opacity: overlayOpacity }}>
-        {/* Radial spotlight — focuses attention on text area */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_30%_50%,rgba(30,27,25,0.85)_0%,rgba(30,27,25,0.4)_50%,transparent_80%)]" />
-        {/* Bottom gradient for section transition */}
-        <div className="absolute inset-0 bg-gradient-to-t from-pw-charcoal via-transparent to-pw-charcoal/30" />
-        {/* Subtle color cast */}
-        <div className="absolute inset-0 bg-pw-teal/5 mix-blend-overlay" />
-      </motion.div>
-
-      {/* Floating decorative paw — bobs gently */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 1.5 }}
-        className="absolute right-[10%] top-[20%] z-[2] hidden lg:block"
-      >
-        <motion.div
-          animate={{ y: [0, -12, 0], rotate: [0, 5, 0] }}
-          transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-        >
-          <PawIcon size={80} className="text-white/[0.04]" />
-        </motion.div>
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2.5, duration: 1.5 }}
-        className="absolute left-[5%] bottom-[25%] z-[2] hidden lg:block"
-      >
-        <motion.div
-          animate={{ y: [0, 10, 0], rotate: [0, -8, 0] }}
-          transition={{ repeat: Infinity, duration: 8, ease: "easeInOut", delay: 2 }}
-        >
-          <PawIcon size={50} className="text-white/[0.03]" />
-        </motion.div>
-      </motion.div>
-
-      {/* Content */}
-      <motion.div
-        className="relative z-10 mx-auto w-full max-w-pw-container px-6 pt-32 pb-20"
-        style={{ y: contentY }}
-      >
-        <div className="max-w-2xl">
-          {/* Glassmorphism container */}
-          <div className="relative rounded-3xl bg-white/[0.04] backdrop-blur-sm border border-white/[0.08] p-8 sm:p-10">
+      <div className="mx-auto w-full max-w-pw-container px-6 py-24 lg:py-32">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left column — content */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="flex flex-col"
+          >
             {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.3, duration: 0.5, ease: "easeOut" }}
-            >
-              <Badge tone="gold">Est. {brand.established} &middot; {brand.suburb}</Badge>
+            <motion.div variants={itemVariants}>
+              <Badge tone="gold">Est. {brand.established} &middot; Balmain, Sydney</Badge>
             </motion.div>
 
-            {/* Headline — per-character animated reveal */}
-            <h1 className="mt-6 font-display text-display-hero text-white">
-              {chars.map((word, wi) => (
-                <span key={wi} className="inline-block mr-[0.22em]">
-                  {word.map((char, ci) => (
-                    <span key={ci} className="inline-block overflow-hidden">
-                      <motion.span
-                        className="inline-block"
-                        initial={{ y: "110%", opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{
-                          delay: 0.5 + wi * 0.08 + ci * 0.02,
-                          duration: 0.5,
-                          ease: [0.22, 1, 0.36, 1],
-                        }}
-                      >
-                        {char}
-                      </motion.span>
-                    </span>
-                  ))}
-                </span>
-              ))}
-            </h1>
+            {/* H1 Headline */}
+            <motion.h1
+              variants={itemVariants}
+              className="mt-6 font-display text-display-hero font-bold text-pw-charcoal leading-tight"
+            >
+              {hero.headline}
+            </motion.h1>
 
             {/* Script tagline */}
             <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.0, duration: 0.6 }}
-              className="mt-3 font-script text-xl sm:text-2xl text-pw-amber-200"
+              variants={itemVariants}
+              className="mt-3 font-script text-2xl sm:text-3xl text-pw-terracotta"
             >
               {hero.tagline}
             </motion.p>
 
-            {/* Animated accent line */}
-            <motion.div
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ delay: 1.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-4 h-[2px] w-24 origin-left bg-gradient-to-r from-pw-terracotta to-pw-amber"
-            />
-
             {/* Subheadline */}
             <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.4, duration: 0.6 }}
-              className="mt-5 text-lg text-white/75 leading-relaxed max-w-lg"
+              variants={itemVariants}
+              className="mt-5 text-lg text-pw-muted leading-relaxed max-w-lg"
             >
               {hero.subheadline}
             </motion.p>
 
-            {/* CTAs — premium styling */}
+            {/* CTAs */}
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.6, duration: 0.6 }}
+              variants={itemVariants}
               className="mt-8 flex flex-wrap gap-4"
             >
-              <Link
-                href="/booking"
-                className="relative inline-flex items-center justify-center rounded-full px-8 py-4 text-sm font-semibold text-white overflow-hidden transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] group"
-              >
-                {/* Gradient background */}
-                <span className="absolute inset-0 bg-gradient-to-r from-pw-terracotta to-pw-terracotta-600 transition-opacity duration-300" />
-                {/* Glow on hover */}
-                <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-pw-terracotta to-pw-amber shadow-[0_0_32px_rgba(196,112,75,0.4)]" />
-                <span className="relative z-10">{hero.primaryCtaLabel}</span>
+              <Link href={hero.cta.href}>
+                <Button variant="primary" asChild>
+                  {hero.cta.label}
+                </Button>
               </Link>
-
-              <Link
-                href={`tel:${brand.phone.replace(/\s/g, "")}`}
-                className="inline-flex items-center justify-center rounded-full px-8 py-4 text-sm font-semibold text-white border border-white/20 bg-white/[0.06] backdrop-blur-sm hover:bg-white/[0.12] hover:border-white/30 transition-all duration-300"
-              >
-                <Phone className="mr-2 h-4 w-4" />
-                {hero.secondaryCtaLabel}
+              <Link href={hero.ctaSecondary.href}>
+                <Button variant="secondary" asChild>
+                  <Phone className="mr-2 h-4 w-4 inline-block" />
+                  {hero.ctaSecondary.label}
+                </Button>
               </Link>
             </motion.div>
-          </div>
 
-          {/* Trust line — outside glass card */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.8, duration: 0.8 }}
-            className="mt-6 text-xs tracking-[0.15em] uppercase text-white/40 pl-2"
+            {/* Trust line */}
+            <motion.p
+              variants={itemVariants}
+              className="mt-6 text-xs tracking-[0.15em] uppercase text-pw-muted/70"
+            >
+              {hero.trustLine}
+            </motion.p>
+          </motion.div>
+
+          {/* Right column — image */}
+          <motion.div
+            variants={imageVariants}
+            initial="hidden"
+            animate="visible"
+            className="relative w-full aspect-[4/5] lg:aspect-[3/4] rounded-3xl overflow-hidden shadow-pw-xl"
           >
-            {hero.trustLine}
-          </motion.p>
+            <Image
+              src={hero.image}
+              alt="Professional dog grooming at Pawsome and Co studio in Balmain Sydney"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+              priority
+            />
+            {/* Subtle bottom gradient overlay */}
+            <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+          </motion.div>
         </div>
-      </motion.div>
-
-      {/* Scroll indicator — premium pulse */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2.5, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
-      >
-        <span className="text-[9px] tracking-[0.3em] uppercase text-white/30">
-          Scroll
-        </span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-          className="w-[1px] h-10 bg-gradient-to-b from-white/30 via-white/10 to-transparent"
-        />
-      </motion.div>
+      </div>
     </section>
   );
 }

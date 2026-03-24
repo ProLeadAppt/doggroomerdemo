@@ -54,13 +54,13 @@ export const brand: Brand = {
 // Once replaced, remove the remotePatterns entry in next.config.mjs.
 
 export const hero = {
-  headline: "Premium Dog Grooming in Balmain",
+  headline: "Balmain's Most-Loved Dog Grooming Studio",
   subheadline:
-    "Gentle hands, expert grooming, and tail-wagging results at Balmain\u2019s favourite dog grooming studio.",
-  tagline: "Where every dog leaves happy.",
-  primaryCtaLabel: "Book a Groom",
-  secondaryCtaLabel: "Call Us",
-  trustLine: `${brand.googleRating} Stars \u00b7 ${brand.reviewCount} Reviews \u00b7 Est. ${brand.established} \u00b7 ${brand.suburb}`,
+    "Premium grooming, gentle care, and tail-wagging results \u2014 trusted by 2,400+ Sydney pup parents since 2019.",
+  tagline: "where every pup is a VIP",
+  cta: { label: "Book Your Pup's Pamper Day", href: "/booking" },
+  ctaSecondary: { label: "Call (02) 8912 3456", href: "tel:+61289123456" },
+  trustLine: "\u2605 4.9 Google Rating \u00b7 127+ Reviews \u00b7 Est. 2019 \u00b7 Balmain",
   // TODO: Replace with /images/hero/hero-dog-grooming-balmain.jpg (1920×1080 minimum)
   image:
     "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1920&q=80",
