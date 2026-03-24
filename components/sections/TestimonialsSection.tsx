@@ -1,11 +1,8 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import Link from "next/link";
 import { Star, ArrowRight, ArrowLeft, CheckCircle2 } from "lucide-react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper/modules";
-import type { Swiper as SwiperType } from "swiper";
 import { motion } from "framer-motion";
 import { Section } from "../layout/Section";
 import { SectionHeading } from "../ui/SectionHeading";
@@ -13,34 +10,62 @@ import { Button } from "../ui/Button";
 import { FadeInSection } from "../motion/FadeInSection";
 import { reviews, brand } from "../../data/site";
 
-import "swiper/css";
-
-function AnimatedStars({ count, delay = 0 }: { count: number; delay?: number }) {
+function StarRating({ count }: { count: number }) {
   return (
     <div className="flex gap-0.5">
       {Array.from({ length: 5 }).map((_, i) => (
-        <motion.div
+        <Star
           key={i}
-          initial={{ scale: 0, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: delay + i * 0.08, duration: 0.3, type: "spring", stiffness: 300 }}
-        >
-          <Star
-            className={`h-4 w-4 ${
-              i < count
-                ? "fill-pw-amber text-pw-amber"
-                : "fill-pw-border text-pw-border"
-            }`}
-          />
-        </motion.div>
+          className={`h-4 w-4 ${
+            i < count ? "fill-pw-amber text-pw-amber" : "fill-pw-border text-pw-border"
+          }`}
+          aria-hidden="true"
+        />
       ))}
     </div>
   );
 }
 
 export function TestimonialsSection() {
-  const swiperRef = useRef<SwiperType | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const updateScrollState = () => {
+    const el = scrollRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 10);
+    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 10);
+  };
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    el.addEventListener("scroll", updateScrollState, { passive: true });
+    updateScrollState();
+    return () => el.removeEventListener("scroll", updateScrollState);
+  }, []);
+
+  // Auto-advance every 5s
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const timer = setInterval(() => {
+      if (el.scrollLeft >= el.scrollWidth - el.clientWidth - 10) {
+        el.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        el.scrollBy({ left: el.clientWidth * 0.8, behavior: "smooth" });
+      }
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const scroll = (dir: "left" | "right") => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const amount = el.clientWidth * 0.8;
+    el.scrollBy({ left: dir === "left" ? -amount : amount, behavior: "smooth" });
+  };
 
   return (
     <Section id="reviews">
@@ -56,18 +81,18 @@ export function TestimonialsSection() {
         subtitle={`Rated ${brand.googleRating} stars on Google. Here\u2019s what our clients say.`}
       />
 
-      {/* Google rating badge — premium */}
+      {/* Google rating badge */}
       <FadeInSection className="mt-8 flex justify-center">
         <div className="inline-flex items-center gap-3 bg-white rounded-full px-6 py-3 shadow-pw-lg border border-pw-amber/20">
           <div className="flex items-center gap-1.5">
             <span className="font-display text-3xl font-bold text-pw-charcoal">
               {brand.googleRating}
             </span>
-            <AnimatedStars count={5} />
+            <StarRating count={5} />
           </div>
           <div className="h-6 w-[1px] bg-pw-border" />
           <div className="flex items-center gap-1.5">
-            <CheckCircle2 className="h-4 w-4 text-green-500" />
+            <CheckCircle2 className="h-4 w-4 text-green-500" aria-hidden="true" />
             <span className="text-xs text-pw-muted">
               {brand.reviewCount} Verified Reviews
             </span>
@@ -75,37 +100,32 @@ export function TestimonialsSection() {
         </div>
       </FadeInSection>
 
-      {/* Swiper carousel */}
+      {/* CSS Scroll-snap carousel */}
       <FadeInSection className="mt-12 relative">
-        <Swiper
-          modules={[Autoplay, Navigation]}
-          spaceBetween={24}
-          slidesPerView={1}
-          autoplay={{ delay: 5000, disableOnInteraction: false }}
-          onSwiper={(swiper) => { swiperRef.current = swiper; }}
-          breakpoints={{
-            640: { slidesPerView: 1 },
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
-          }}
-          className="!overflow-visible"
+        <div
+          ref={scrollRef}
+          className="flex gap-6 overflow-x-auto scroll-snap-x snap-mandatory no-scrollbar pb-2"
+          style={{ scrollSnapType: "x mandatory" }}
         >
           {reviews.map((review) => (
-            <SwiperSlide key={review.id}>
-              <div className="rounded-2xl border border-pw-border bg-white p-6 hover:shadow-pw-lg hover:border-pw-amber/20 transition-all duration-500 h-full flex flex-col relative overflow-hidden group">
-                {/* Decorative quote mark */}
-                <span className="absolute top-3 right-4 font-display text-6xl leading-none text-pw-sage/[0.06] pointer-events-none select-none">
+            <div
+              key={review.id}
+              className="flex-shrink-0 w-[85%] sm:w-[45%] lg:w-[31%] snap-start"
+              style={{ scrollSnapAlign: "start" }}
+            >
+              <div className="rounded-2xl border border-pw-border bg-white p-6 hover:shadow-pw-lg hover:border-pw-amber/20 transition-all duration-300 h-full flex flex-col relative overflow-hidden">
+                {/* Quote mark */}
+                <span className="absolute top-3 right-4 font-display text-6xl leading-none text-pw-sage/[0.06] pointer-events-none select-none" aria-hidden="true">
                   &ldquo;
                 </span>
 
-                <AnimatedStars count={review.stars} delay={0.2} />
+                <StarRating count={review.stars} />
 
                 <p className="mt-4 text-sm text-pw-charcoal leading-relaxed flex-1 relative z-10">
                   &ldquo;{review.text}&rdquo;
                 </p>
 
                 <div className="mt-5 pt-4 border-t border-pw-border/50 flex items-center gap-3">
-                  {/* Avatar placeholder */}
                   <div className="w-9 h-9 rounded-full bg-gradient-to-br from-pw-sage/20 to-pw-teal/20 flex items-center justify-center flex-shrink-0">
                     <span className="font-display text-xs font-bold text-pw-teal">
                       {review.name.charAt(0)}
@@ -123,23 +143,25 @@ export function TestimonialsSection() {
                   </div>
                 </div>
               </div>
-            </SwiperSlide>
+            </div>
           ))}
-        </Swiper>
+        </div>
 
         {/* Navigation arrows */}
         <div className="flex justify-center gap-3 mt-8">
           <button
-            onClick={() => swiperRef.current?.slidePrev()}
-            className="w-10 h-10 rounded-full border border-pw-border bg-white hover:bg-pw-elevated hover:border-pw-sage/30 transition-all flex items-center justify-center"
-            aria-label="Previous review"
+            onClick={() => scroll("left")}
+            disabled={!canScrollLeft}
+            className="w-11 h-11 rounded-full border border-pw-border bg-white hover:bg-pw-elevated hover:border-pw-sage/30 transition-all flex items-center justify-center disabled:opacity-30"
+            aria-label="Previous reviews"
           >
             <ArrowLeft className="h-4 w-4 text-pw-muted" />
           </button>
           <button
-            onClick={() => swiperRef.current?.slideNext()}
-            className="w-10 h-10 rounded-full border border-pw-border bg-white hover:bg-pw-elevated hover:border-pw-sage/30 transition-all flex items-center justify-center"
-            aria-label="Next review"
+            onClick={() => scroll("right")}
+            disabled={!canScrollRight}
+            className="w-11 h-11 rounded-full border border-pw-border bg-white hover:bg-pw-elevated hover:border-pw-sage/30 transition-all flex items-center justify-center disabled:opacity-30"
+            aria-label="Next reviews"
           >
             <ArrowRight className="h-4 w-4 text-pw-muted" />
           </button>
@@ -150,7 +172,7 @@ export function TestimonialsSection() {
         <Button variant="secondary" asChild>
           <Link href="/reviews">
             Read All Reviews
-            <ArrowRight className="ml-2 h-4 w-4" />
+            <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
           </Link>
         </Button>
       </FadeInSection>
