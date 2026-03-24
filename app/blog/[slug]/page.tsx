@@ -68,6 +68,7 @@ export default async function BlogArticlePage({ params }: Props) {
             fill
             sizes="100vw"
             className="object-cover"
+            priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-pw-cream via-pw-cream/30 to-transparent" />
         </div>

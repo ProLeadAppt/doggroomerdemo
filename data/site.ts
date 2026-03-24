@@ -455,6 +455,9 @@ export const team: TeamMember[] = [
 
 export const about = {
   title: "A studio built on love, patience, and really good haircuts.",
+  // TODO: Replace with /images/about/studio-interior.jpg
+  image:
+    "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=800&q=80",
   story: [
     "Pawsome & Co. was born in 2019 when Sophie Chen left her corporate grooming role to open a one-chair salon on Darling Street, Balmain. The idea was simple: create the kind of grooming experience she\u2019d want for her own dogs.",
     "What started as a passion project quickly became Balmain\u2019s most-loved grooming studio. Three years and 4,000+ grooms later, the team has grown to three expert groomers and a dedicated front-of-house, but the philosophy hasn\u2019t changed.",

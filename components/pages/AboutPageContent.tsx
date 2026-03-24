@@ -49,7 +49,7 @@ export function AboutPageContent() {
           <FadeInSection delay={0.2}>
             <div className="relative rounded-2xl overflow-hidden aspect-[4/3]">
               <Image
-                src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=800&q=80"
+                src={about.image}
                 alt="Inside the Pawsome & Co. dog grooming studio on Darling Street, Balmain"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
