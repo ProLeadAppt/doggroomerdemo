@@ -4,14 +4,14 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SchemaScript } from "@/components/seo/SchemaScript";
 import { getLocalBusinessSchema, getFAQSchema } from "@/lib/schema";
 
-// Eagerly loaded (above fold)
+// Eagerly loaded (above fold — critical path)
 import { HeroSection } from "@/components/sections/HeroSection";
-import { OfferBanner } from "@/components/sections/OfferBanner";
-import { QuickInfoStrip } from "@/components/sections/QuickInfoStrip";
 import { TrustBar } from "@/components/sections/TrustBar";
-import { WhyPawsome } from "@/components/sections/WhyPawsome";
 
-// Lazy loaded (below fold)
+// Lazy loaded (below fold or non-critical)
+const OfferBanner = dynamic(() => import("@/components/sections/OfferBanner").then(mod => ({ default: mod.OfferBanner })));
+const QuickInfoStrip = dynamic(() => import("@/components/sections/QuickInfoStrip").then(mod => ({ default: mod.QuickInfoStrip })));
+const WhyPawsome = dynamic(() => import("@/components/sections/WhyPawsome").then(mod => ({ default: mod.WhyPawsome })));
 const ServicesOverview = dynamic(() => import("@/components/sections/ServicesOverview").then(mod => ({ default: mod.ServicesOverview })));
 const HowItWorks = dynamic(() => import("@/components/sections/HowItWorks").then(mod => ({ default: mod.HowItWorks })));
 const BeforeAfterGallery = dynamic(() => import("@/components/sections/BeforeAfterGallery").then(mod => ({ default: mod.BeforeAfterGallery })));

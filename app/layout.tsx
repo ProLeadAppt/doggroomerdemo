@@ -95,7 +95,7 @@ export default function RootLayout({
         <link
           rel="preload"
           as="image"
-          href="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1920&q=80"
+          href="/images/hero/golden-retriever-grooming.jpg"
           fetchPriority="high"
         />
       </head>

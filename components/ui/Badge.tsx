@@ -17,7 +17,7 @@ export function Badge({
   const styles = {
     sage: "bg-pw-sage/10 text-pw-sage-700 border border-pw-sage/30",
     warm: "bg-pw-terracotta/10 text-pw-terracotta border border-pw-terracotta/30",
-    gold: "bg-pw-amber/10 text-pw-amber-700 border border-pw-amber/30",
+    gold: "bg-pw-amber/10 text-pw-amber-800 border border-pw-amber/30",
     neutral: "bg-pw-elevated text-pw-muted border border-pw-border",
     teal: "bg-pw-teal/10 text-pw-teal border border-pw-teal/30",
   }[tone];
