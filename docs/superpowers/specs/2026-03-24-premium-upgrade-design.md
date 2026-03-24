@@ -281,6 +281,12 @@ Built on Phase 1's performant, well-structured foundation.
 
 ---
 
+## Clarifications
+
+- **Phase boundary:** Phase 1 deploys to production first. Phase 2 begins after Phase 1 is live and verified. Each phase is a complete, shippable increment.
+- **Image sourcing:** ~20-25 curated images needed across hero (2-3), gallery (6-8), team (4), services (6), and general/lifestyle (4-5). Source from Pexels and Unsplash downloads — prioritize real grooming studio photography over generic dog photos.
+- **Dynamic-looking static data:** All social proof indicators ("3 spots left this week", "127 booked this month", recent booking activity) are hardcoded/static values. No backend API. They exist for conversion psychology, not real-time accuracy.
+
 ## Technical Constraints
 
 - **Framework:** Stay on Next.js 16 + React 19 + Tailwind 3 — no framework changes
