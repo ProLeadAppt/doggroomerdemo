@@ -158,7 +158,7 @@ export function HeroSection() {
             >
               <Link
                 href="/booking"
-                className="relative inline-flex items-center justify-center rounded-full px-8 py-4 text-sm font-semibold text-white overflow-hidden transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] group"
+                className="relative inline-flex items-center justify-center rounded-full px-8 py-4 text-sm font-semibold text-white overflow-hidden transition-[transform,background-color,border-color] duration-300 hover:scale-[1.03] active:scale-[0.97] group"
               >
                 {/* Gradient background */}
                 <span className="absolute inset-0 bg-gradient-to-r from-pw-terracotta to-pw-terracotta-600 transition-opacity duration-300" />
@@ -169,7 +169,7 @@ export function HeroSection() {
 
               <Link
                 href={`tel:${brand.phone.replace(/\s/g, "")}`}
-                className="inline-flex items-center justify-center rounded-full px-8 py-4 text-sm font-semibold text-white border border-white/20 bg-white/[0.06] backdrop-blur-sm hover:bg-white/[0.12] hover:border-white/30 transition-all duration-300"
+                className="inline-flex items-center justify-center rounded-full px-8 py-4 text-sm font-semibold text-white border border-white/20 bg-white/[0.06] backdrop-blur-sm hover:bg-white/[0.12] hover:border-white/30 transition-[transform,background-color,border-color] duration-300"
               >
                 <Phone className="mr-2 h-4 w-4" />
                 {hero.secondaryCtaLabel}

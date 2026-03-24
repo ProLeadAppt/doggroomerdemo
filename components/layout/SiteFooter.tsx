@@ -19,6 +19,8 @@ export function SiteFooter() {
   const year = new Date().getFullYear();
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [emailSubmitted, setEmailSubmitted] = useState(false);
+  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [newsletterSubmitting, setNewsletterSubmitting] = useState(false);
 
   useEffect(() => {
     const handler = () => setShowScrollTop(window.scrollY > 500);
@@ -80,9 +82,21 @@ export function SiteFooter() {
                   <p className="text-sm text-pw-sage-300">Thanks! You&rsquo;re subscribed.</p>
                 ) : (
                   <form
-                    onSubmit={(e) => {
+                    onSubmit={async (e) => {
                       e.preventDefault();
-                      setEmailSubmitted(true);
+                      setNewsletterSubmitting(true);
+                      try {
+                        const res = await fetch("/api/newsletter", {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
+                          body: JSON.stringify({ email: newsletterEmail }),
+                        });
+                        if (res.ok) setEmailSubmitted(true);
+                      } catch {
+                        // Silently fail for newsletter - non-critical
+                      } finally {
+                        setNewsletterSubmitting(false);
+                      }
                     }}
                     className="flex gap-2"
                   >
@@ -90,11 +104,14 @@ export function SiteFooter() {
                       type="email"
                       placeholder="Your email"
                       required
+                      value={newsletterEmail}
+                      onChange={(e) => setNewsletterEmail(e.target.value)}
                       className="flex-1 min-w-0 rounded-full bg-white/10 border border-white/10 px-4 py-2 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-pw-sage/50 transition-colors"
                     />
                     <button
                       type="submit"
-                      className="w-9 h-9 rounded-full bg-pw-sage flex items-center justify-center hover:bg-pw-sage-400 transition-colors flex-shrink-0"
+                      disabled={newsletterSubmitting}
+                      className="w-9 h-9 rounded-full bg-pw-sage flex items-center justify-center hover:bg-pw-sage-400 transition-colors flex-shrink-0 disabled:opacity-50"
                     >
                       <Send className="h-3.5 w-3.5 text-white" />
                     </button>
@@ -114,7 +131,7 @@ export function SiteFooter() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-pw-subtle hover:text-white hover:border-pw-sage/50 hover:shadow-glow-sage transition-all duration-300"
+                    className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-pw-subtle hover:text-white hover:border-pw-sage/50 hover:shadow-glow-sage transition-[color,border-color,box-shadow] duration-300"
                   >
                     <social.icon className="h-4 w-4" />
                   </Link>
@@ -132,7 +149,7 @@ export function SiteFooter() {
                   <Link
                     key={item.label}
                     href={item.href}
-                    className="text-sm text-pw-subtle hover:text-white hover:translate-x-1 transition-all duration-200"
+                    className="text-sm text-pw-subtle hover:text-white hover:translate-x-1 transition-[color,transform] duration-200"
                   >
                     {item.label}
                   </Link>
@@ -156,7 +173,7 @@ export function SiteFooter() {
                   <Link
                     key={service}
                     href="/services"
-                    className="text-sm text-pw-subtle hover:text-white hover:translate-x-1 transition-all duration-200"
+                    className="text-sm text-pw-subtle hover:text-white hover:translate-x-1 transition-[color,transform] duration-200"
                   >
                     {service}
                   </Link>

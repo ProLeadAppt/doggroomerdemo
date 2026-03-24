@@ -75,10 +75,10 @@ export function BeforeAfterGallery() {
                 alt={item.label}
                 width={400}
                 height={i % 2 === 0 ? 320 : 240}
-                className="w-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                className="w-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-[filter,transform] duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-pw-charcoal/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+              <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-[opacity,transform] duration-500">
                 <p className="font-display font-bold text-white text-sm">
                   {item.label}
                 </p>

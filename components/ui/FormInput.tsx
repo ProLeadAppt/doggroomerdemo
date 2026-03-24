@@ -18,7 +18,7 @@ type SelectProps = BaseProps &
 type FormInputProps = InputProps | TextareaProps | SelectProps;
 
 const baseInput =
-  "w-full rounded-xl border border-pw-border bg-white px-4 py-3 text-sm text-pw-charcoal placeholder:text-pw-subtle transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-pw-sage/40 focus:border-pw-sage";
+  "w-full rounded-xl border border-pw-border bg-white px-4 py-3 text-sm text-pw-charcoal placeholder:text-pw-subtle transition-[color,border-color,box-shadow] duration-200 focus:outline-none focus:ring-2 focus:ring-pw-sage/60 focus:border-pw-sage";
 
 const errorInput = "border-red-400 focus:ring-red-300/40 focus:border-red-400";
 

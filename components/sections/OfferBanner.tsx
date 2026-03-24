@@ -1,12 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { X, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function OfferBanner() {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const dismissed = localStorage.getItem("pw-offer-dismissed");
+    if (!dismissed) {
+      setVisible(true);
+    }
+  }, []);
+
+  const dismiss = () => {
+    localStorage.setItem("pw-offer-dismissed", "true");
+    setVisible(false);
+  };
 
   return (
     <AnimatePresence>
@@ -33,7 +45,7 @@ export function OfferBanner() {
               </span>
             </p>
             <button
-              onClick={() => setVisible(false)}
+              onClick={dismiss}
               className="absolute right-4 text-white/60 hover:text-white transition-colors"
               aria-label="Dismiss offer"
             >

@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://pawsomeandco.com.au/sitemap.xml",
+    sitemap: "https://doggroomer.netlify.app/sitemap.xml",
   };
 }

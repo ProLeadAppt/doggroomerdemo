@@ -28,7 +28,7 @@ export function SiteHeader() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,box-shadow,border-color] duration-500 ${
           scrolled
             ? "bg-white/85 backdrop-blur-xl border-b border-pw-border/50 shadow-pw"
             : "bg-transparent border-b border-transparent"
@@ -56,7 +56,7 @@ export function SiteHeader() {
               <Link
                 key={item.label}
                 href={item.href}
-                className="relative text-xs font-medium tracking-[0.12em] uppercase text-pw-muted transition-colors hover:text-pw-charcoal after:absolute after:-bottom-1 after:left-0 after:h-[1px] after:w-0 after:bg-pw-terracotta after:transition-all after:duration-300 hover:after:w-full"
+                className="relative text-xs font-medium tracking-[0.12em] uppercase text-pw-muted transition-colors hover:text-pw-charcoal after:absolute after:-bottom-1 after:left-0 after:h-[1px] after:w-0 after:bg-pw-terracotta after:transition-colors after:duration-300 hover:after:w-full"
               >
                 {item.label}
               </Link>

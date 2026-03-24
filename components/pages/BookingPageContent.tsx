@@ -51,6 +51,8 @@ export function BookingPageContent() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [confirmed, setConfirmed] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
   const selectedServiceData = services.find((s) => s.id === selectedService);
 
@@ -71,8 +73,37 @@ export function BookingPageContent() {
     return d;
   }).filter((d) => d.getDay() !== 0); // No Sundays
 
-  const handleConfirm = () => {
-    setConfirmed(true);
+  const handleConfirm = async () => {
+    setSubmitting(true);
+    setError("");
+    try {
+      const res = await fetch("/api/booking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          service: selectedServiceData?.name,
+          dogName,
+          breed,
+          dogSize,
+          notes,
+          date: selectedDate,
+          time: selectedTime,
+          ownerName,
+          email,
+          phone,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.error || "Something went wrong. Please try again.");
+        return;
+      }
+      setConfirmed(true);
+    } catch {
+      setError("Network error. Please check your connection and try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -97,7 +128,7 @@ export function BookingPageContent() {
               <div key={s.label} className="flex items-center">
                 <div className="flex flex-col items-center">
                   <div
-                    className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold transition-all duration-300 ${
+                    className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold transition-[color,background-color,border-color,box-shadow] duration-300 ${
                       i < step
                         ? "bg-pw-sage text-white"
                         : i === step
@@ -176,7 +207,7 @@ export function BookingPageContent() {
                         <button
                           key={service.id}
                           onClick={() => setSelectedService(service.id)}
-                          className={`flex items-start gap-4 rounded-xl border p-4 text-left transition-all duration-200 ${
+                          className={`flex items-start gap-4 rounded-xl border p-4 text-left transition-[color,background-color,border-color,box-shadow] duration-200 ${
                             selectedService === service.id
                               ? "border-pw-terracotta bg-pw-terracotta/5 shadow-glow-terracotta"
                               : "border-pw-border bg-white hover:border-pw-sage/30 hover:shadow-pw"
@@ -278,7 +309,7 @@ export function BookingPageContent() {
                           <button
                             key={label}
                             onClick={() => setSelectedDate(label)}
-                            className={`rounded-lg p-2 text-center text-xs transition-all duration-200 ${
+                            className={`rounded-lg p-2 text-center text-xs transition-[color,background-color,border-color,box-shadow] duration-200 ${
                               selectedDate === label
                                 ? "bg-pw-teal text-white shadow-glow-sage"
                                 : "bg-white border border-pw-border hover:border-pw-sage/30"
@@ -310,7 +341,7 @@ export function BookingPageContent() {
                         <button
                           key={time}
                           onClick={() => setSelectedTime(time)}
-                          className={`rounded-lg py-2.5 px-3 text-sm font-medium transition-all duration-200 ${
+                          className={`rounded-lg py-2.5 px-3 text-sm font-medium transition-[color,background-color,border-color,box-shadow] duration-200 ${
                             selectedTime === time
                               ? "bg-pw-terracotta text-white"
                               : "bg-white border border-pw-border hover:border-pw-terracotta/30"
@@ -418,6 +449,13 @@ export function BookingPageContent() {
             )}
           </AnimatePresence>
 
+          {/* Error message */}
+          {error && (
+            <div className="mt-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+              {error}
+            </div>
+          )}
+
           {/* Navigation */}
           {!confirmed && (
             <div className="mt-8 flex items-center justify-between">
@@ -439,9 +477,9 @@ export function BookingPageContent() {
                   <ChevronRight className="ml-1 h-4 w-4" />
                 </Button>
               ) : (
-                <Button onClick={handleConfirm}>
-                  Confirm Booking
-                  <Check className="ml-2 h-4 w-4" />
+                <Button onClick={handleConfirm} disabled={submitting}>
+                  {submitting ? "Submitting..." : "Confirm Booking"}
+                  {!submitting && <Check className="ml-2 h-4 w-4" />}
                 </Button>
               )}
             </div>

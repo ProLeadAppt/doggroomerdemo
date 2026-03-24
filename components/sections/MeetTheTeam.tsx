@@ -44,7 +44,7 @@ export function MeetTheTeam() {
           return (
             <FadeInSection key={member.id} delay={i * 0.1}>
               <div
-                className={`group rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-pw-xl ${
+                className={`group rounded-2xl overflow-hidden transition-shadow duration-500 hover:shadow-pw-xl ${
                   isOwner
                     ? "border-2 border-pw-amber/30 bg-white"
                     : "border border-pw-border bg-white"
@@ -56,10 +56,10 @@ export function MeetTheTeam() {
                     src={member.image}
                     alt={member.name}
                     fill
-                    className="object-cover transition-all duration-700 group-hover:scale-105 group-hover:opacity-[0.15]"
+                    className="object-cover transition-[transform,opacity,filter] duration-700 group-hover:scale-105 group-hover:opacity-[0.15]"
                   />
                   {/* Gradient overlay on non-hover */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-pw-charcoal/30 to-transparent group-hover:from-transparent transition-all duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-pw-charcoal/30 to-transparent group-hover:from-transparent transition-opacity duration-500" />
 
                   {/* Bio text — revealed on hover */}
                   <div className="absolute inset-0 flex flex-col items-center justify-center p-5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">

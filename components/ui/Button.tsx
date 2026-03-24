@@ -14,7 +14,7 @@ type ButtonProps = {
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const baseClasses =
-  "relative inline-flex items-center justify-center rounded-full px-7 py-3.5 text-sm font-semibold tracking-wide transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pw-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-pw-cream disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden";
+  "relative inline-flex items-center justify-center rounded-full px-7 py-3.5 text-sm font-semibold tracking-wide transition-[color,background-color,border-color,box-shadow,opacity] duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pw-terracotta focus-visible:ring-offset-2 focus-visible:ring-offset-pw-cream disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden";
 
 const variants: Record<ButtonVariant, string> = {
   primary:
@@ -40,7 +40,7 @@ export function Button({
   } ${className}`;
 
   if (asChild) {
-    return <span className={classes}>{children}</span>;
+    return <div className={classes} role="presentation">{children}</div>;
   }
 
   const Comp = motion.button;
