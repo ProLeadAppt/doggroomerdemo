@@ -73,7 +73,7 @@ const config: Config = {
         },
         "pw-surface": "#ffffff",
         "pw-elevated": "#fbf7f0",
-        "pw-muted": "#8a8577",
+        "pw-muted": "#736e62",
         "pw-subtle": "#b5afa3",
         "pw-border": "#e8e0d4",
       },

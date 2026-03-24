@@ -112,7 +112,7 @@ export function HeroSection() {
             {/* Trust line */}
             <motion.p
               variants={itemVariants}
-              className="mt-6 text-xs tracking-[0.15em] uppercase text-pw-muted/70"
+              className="mt-6 text-xs tracking-[0.15em] uppercase text-pw-muted"
             >
               {hero.trustLine}
             </motion.p>

@@ -61,9 +61,7 @@ export const hero = {
   cta: { label: "Book Your Pup's Pamper Day", href: "/booking" },
   ctaSecondary: { label: "Call (02) 8912 3456", href: "tel:+61289123456" },
   trustLine: "\u2605 4.9 Google Rating \u00b7 127+ Reviews \u00b7 Est. 2019 \u00b7 Balmain",
-  // TODO: Replace with /images/hero/hero-dog-grooming-balmain.jpg (1920×1080 minimum)
-  image:
-    "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1920&q=80",
+  image: "/images/hero/golden-retriever-grooming.jpg",
 };
 
 export const stats = {
