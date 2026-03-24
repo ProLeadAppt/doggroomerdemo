@@ -91,6 +91,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="preload"
+          as="image"
+          href="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1920&q=80"
+          fetchPriority="high"
+        />
+      </head>
       <body
         className={`${displayFont.variable} ${bodyFont.variable} ${scriptFont.variable} min-h-screen bg-pw-cream text-pw-charcoal antialiased font-body relative overflow-x-hidden`}
       >

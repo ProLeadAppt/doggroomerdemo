@@ -79,9 +79,9 @@ export function WhyPawsome() {
                 />
               </div>
               <div>
-                <h3 className="font-display font-bold text-pw-charcoal">
+                <h2 className="font-display font-bold text-pw-charcoal text-base">
                   {item.title}
-                </h3>
+                </h2>
                 <p className="mt-1 text-sm text-pw-muted leading-relaxed">
                   {item.description}
                 </p>

@@ -132,6 +132,7 @@ export function HeroSection() {
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
               priority
+              fetchPriority="high"
             />
             {/* Subtle bottom gradient overlay */}
             <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />

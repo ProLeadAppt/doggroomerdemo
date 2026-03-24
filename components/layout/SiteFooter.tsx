@@ -94,6 +94,7 @@ export function SiteFooter() {
                     />
                     <button
                       type="submit"
+                      aria-label="Subscribe to newsletter"
                       className="w-11 h-11 sm:w-9 sm:h-9 rounded-full bg-pw-sage flex items-center justify-center hover:bg-pw-sage-400 transition-colors flex-shrink-0"
                     >
                       <Send className="h-3.5 w-3.5 text-white" />
@@ -173,13 +174,13 @@ export function SiteFooter() {
                 <p>{brand.address}</p>
                 <Link
                   href={`tel:${brand.phone.replace(/\s/g, "")}`}
-                  className="block hover:text-white transition-colors"
+                  className="block underline underline-offset-2 decoration-white/20 hover:text-white hover:decoration-white/60 transition-colors"
                 >
                   {brand.phone}
                 </Link>
                 <Link
                   href={`mailto:${brand.email}`}
-                  className="block hover:text-white transition-colors"
+                  className="block underline underline-offset-2 decoration-white/20 hover:text-white hover:decoration-white/60 transition-colors"
                 >
                   {brand.email}
                 </Link>
@@ -200,7 +201,7 @@ export function SiteFooter() {
                 href="https://munyal.com.au"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-pw-terracotta-200 hover:text-pw-terracotta-100 transition-colors"
+                className="text-pw-terracotta-200 underline underline-offset-2 hover:text-pw-terracotta-100 transition-colors"
               >
                 Munyal
               </Link>

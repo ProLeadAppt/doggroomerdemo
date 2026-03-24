@@ -39,19 +39,19 @@ export function CookieConsent() {
           className="fixed bottom-0 left-0 right-0 z-[9990] p-4"
         >
           <div className="mx-auto max-w-pw-container rounded-2xl bg-pw-charcoal border border-white/10 shadow-pw-xl px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-pw-subtle text-center sm:text-left">
+            <p className="text-sm text-white/80 text-center sm:text-left">
               We use cookies to improve your experience and analyse site traffic.
             </p>
             <div className="flex gap-3 flex-shrink-0">
               <button
                 onClick={decline}
-                className="rounded-full px-4 py-2 text-xs font-medium text-pw-subtle border border-white/10 hover:bg-white/5 transition-colors"
+                className="rounded-full px-4 py-2 text-xs font-medium text-white/80 border border-white/20 hover:bg-white/10 transition-colors"
               >
                 Decline
               </button>
               <button
                 onClick={accept}
-                className="rounded-full px-4 py-2 text-xs font-medium text-white bg-pw-sage hover:bg-pw-sage-400 transition-colors"
+                className="rounded-full px-4 py-2 text-xs font-medium text-white bg-pw-sage-700 hover:bg-pw-sage-600 transition-colors"
               >
                 Accept
               </button>
