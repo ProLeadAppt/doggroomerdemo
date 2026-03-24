@@ -10,6 +10,7 @@ const differentiators = [
     description:
       "We never rush. Every dog is handled with patience, positive reinforcement, and respect for their comfort level.",
     color: "text-pw-sage-600",
+    hoverColor: "group-hover:text-pw-sage-400",
     bg: "bg-pw-sage/10",
     border: "border-pw-sage/20",
   },
@@ -19,6 +20,7 @@ const differentiators = [
     description:
       "Our team holds professional certifications and specialises in breed-specific grooming standards.",
     color: "text-pw-teal",
+    hoverColor: "group-hover:text-pw-teal-300",
     bg: "bg-pw-teal/10",
     border: "border-pw-teal/20",
   },
@@ -28,29 +30,53 @@ const differentiators = [
     description:
       "Not happy with the groom? We\u2019ll fix it for free. No questions asked, no awkward conversations.",
     color: "text-pw-terracotta",
+    hoverColor: "group-hover:text-pw-terracotta-300",
     bg: "bg-pw-terracotta/10",
     border: "border-pw-terracotta/20",
   },
 ];
 
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, x: -24 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.5, ease: "easeOut" as const },
+  },
+};
+
 export function WhyPawsome() {
   return (
     <div className="bg-white border-y border-pw-border">
       <div className="mx-auto max-w-pw-container px-6 py-14">
-        <div className="grid gap-8 md:grid-cols-3">
-          {differentiators.map((item, i) => (
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          className="grid gap-8 md:grid-cols-3"
+        >
+          {differentiators.map((item) => (
             <motion.div
               key={item.title}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
+              variants={cardVariants}
               className="flex items-start gap-4 group"
             >
               <div
-                className={`w-12 h-12 rounded-xl ${item.bg} border ${item.border} flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110`}
+                className={`w-12 h-12 rounded-xl ${item.bg} border ${item.border} flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110`}
               >
-                <item.icon className={`h-5 w-5 ${item.color}`} />
+                <item.icon
+                  className={`h-5 w-5 ${item.color} ${item.hoverColor} transition-colors duration-300`}
+                />
               </div>
               <div>
                 <h3 className="font-display font-bold text-pw-charcoal">
@@ -62,7 +88,7 @@ export function WhyPawsome() {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </div>
   );

@@ -6,11 +6,15 @@ import { motion } from "framer-motion";
 import { Section } from "../layout/Section";
 import { Button } from "../ui/Button";
 import { PawIcon } from "../ui/PawIcon";
-import { brand } from "../../data/site";
+import { brand, conversionData } from "../../data/site";
 
 export function FinalCTA() {
   return (
-    <Section dark noDivider className="relative overflow-hidden">
+    <Section
+      dark
+      noDivider
+      className="relative overflow-hidden bg-gradient-to-br from-pw-charcoal via-pw-charcoal-dark to-pw-sage-900"
+    >
       {/* Decorative paw prints */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <PawIcon
@@ -27,7 +31,7 @@ export function FinalCTA() {
         />
       </div>
 
-      <div className="relative z-10 text-center max-w-2xl mx-auto">
+      <div className="relative z-10 text-center max-w-3xl mx-auto">
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -42,9 +46,9 @@ export function FinalCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="mt-4 font-display text-display-xl text-white"
+          className="mt-4 font-display text-display-xl text-shimmer"
         >
-          Your dog deserves to feel pawsome.
+          Your Pup Deserves the Best &mdash; Book Today
         </motion.h2>
 
         <motion.p
@@ -52,10 +56,9 @@ export function FinalCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="mt-4 text-pw-subtle text-lg"
+          className="mt-5 text-pw-subtle text-lg tracking-wide"
         >
-          Book online in 30 seconds or give us a call. We can&rsquo;t wait to
-          meet your pup.
+          ★ {brand.googleRating} stars · {conversionData.totalGrooms.toLocaleString()}+ happy grooms · Est. {brand.established}
         </motion.p>
 
         <motion.div
@@ -63,9 +66,9 @@ export function FinalCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="mt-8 flex flex-wrap justify-center gap-4"
+          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <Button asChild>
+          <Button asChild className="animate-pulse-glow">
             <Link href="/booking">Book a Groom</Link>
           </Button>
           <Button variant="secondary" asChild>
@@ -74,7 +77,7 @@ export function FinalCTA() {
               className="!text-white !border-white/20 hover:!bg-white/10"
             >
               <Phone className="mr-2 h-4 w-4" />
-              {brand.phone}
+              Or Call Us: {brand.phone}
             </Link>
           </Button>
         </motion.div>

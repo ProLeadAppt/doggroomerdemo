@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ArrowRight } from "lucide-react";
 import { Section } from "../layout/Section";
 import { SectionHeading } from "../ui/SectionHeading";
 import { FadeInSection } from "../motion/FadeInSection";
@@ -32,6 +33,8 @@ export function FAQSection() {
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
                 aria-expanded={openIndex === i}
+                aria-controls={`faq-answer-${i}`}
+                id={`faq-question-${i}`}
                 className="w-full flex items-center justify-between py-5 text-left group"
               >
                 <span className="font-display text-base font-semibold text-pw-charcoal group-hover:text-pw-teal transition-colors pr-4">
@@ -46,9 +49,12 @@ export function FAQSection() {
                 </motion.span>
               </button>
 
-              <AnimatePresence>
+              <AnimatePresence initial={false}>
                 {openIndex === i && (
                   <motion.div
+                    id={`faq-answer-${i}`}
+                    role="region"
+                    aria-labelledby={`faq-question-${i}`}
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
@@ -64,6 +70,19 @@ export function FAQSection() {
             </div>
           </FadeInSection>
         ))}
+
+        {/* Contextual CTA */}
+        <FadeInSection delay={faq.length * 0.05}>
+          <div className="mt-10 text-center">
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 font-display font-semibold text-pw-teal hover:text-pw-teal-400 transition-colors group"
+            >
+              Still Have Questions? Let&rsquo;s Chat
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+          </div>
+        </FadeInSection>
       </div>
     </Section>
   );

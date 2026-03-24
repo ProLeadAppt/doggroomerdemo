@@ -2,10 +2,10 @@
 
 import Image from "next/image";
 import { Award } from "lucide-react";
+import { motion } from "framer-motion";
 import { Section } from "../layout/Section";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Badge } from "../ui/Badge";
-import { FadeInSection } from "../motion/FadeInSection";
 import { team } from "../../data/site";
 
 const badgeColors: Record<string, "sage" | "teal" | "warm" | "gold" | "neutral"> = {
@@ -20,6 +20,24 @@ const badgeColors: Record<string, "sage" | "teal" | "warm" | "gold" | "neutral">
   "Hand Stripping": "teal",
   Bookings: "neutral",
   "Customer Care": "neutral",
+};
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" as const },
+  },
 };
 
 export function MeetTheTeam() {
@@ -37,12 +55,18 @@ export function MeetTheTeam() {
         subtitle="Certified groomers who genuinely love what they do."
       />
 
-      <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {team.map((member, i) => {
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+      >
+        {team.map((member) => {
           const isOwner = member.role.includes("Owner");
 
           return (
-            <FadeInSection key={member.id} delay={i * 0.1}>
+            <motion.div key={member.id} variants={cardVariants}>
               <div
                 className={`group rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-pw-xl ${
                   isOwner
@@ -57,7 +81,7 @@ export function MeetTheTeam() {
                     alt={`${member.name} — ${member.role} at Pawsome & Co.`}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    className="object-cover transition-all duration-700 group-hover:scale-105 group-hover:opacity-[0.15]"
+                    className="object-cover transition-all duration-700 grayscale-[30%] group-hover:grayscale-0 group-hover:scale-105 group-hover:-translate-y-1 group-hover:opacity-[0.15]"
                   />
                   {/* Gradient overlay on non-hover */}
                   <div className="absolute inset-0 bg-gradient-to-t from-pw-charcoal/30 to-transparent group-hover:from-transparent transition-all duration-500" />
@@ -101,10 +125,10 @@ export function MeetTheTeam() {
                   </div>
                 </div>
               </div>
-            </FadeInSection>
+            </motion.div>
           );
         })}
-      </div>
+      </motion.div>
     </Section>
   );
 }

@@ -21,6 +21,33 @@ const stepColors = [
   { bg: "bg-pw-amber/10", border: "border-pw-amber/20", text: "text-pw-amber-700", glow: "group-hover:shadow-glow-amber", accent: "bg-pw-amber" },
 ];
 
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.4,
+    },
+  },
+};
+
+const stepVariants = {
+  hidden: { opacity: 0, y: 32 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" as const },
+  },
+};
+
+const badgeVariants = {
+  hidden: { scale: 0 },
+  visible: {
+    scale: 1,
+    transition: { type: "spring" as const, stiffness: 400, damping: 15, delay: 0.2 },
+  },
+};
+
 export function HowItWorks() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
@@ -50,7 +77,12 @@ export function HowItWorks() {
           />
         </div>
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4"
+        >
           {howItWorks.map((step, i) => {
             const Icon = iconMap[step.icon] || Sparkles;
             const color = stepColors[i];
@@ -58,9 +90,7 @@ export function HowItWorks() {
             return (
               <motion.div
                 key={step.number}
-                initial={{ opacity: 0, y: 32 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.4 + i * 0.2, duration: 0.6, ease: "easeOut" }}
+                variants={stepVariants}
                 className="relative text-center group"
               >
                 {/* Step circle with gradient fill */}
@@ -69,9 +99,7 @@ export function HowItWorks() {
 
                   {/* Step number badge */}
                   <motion.span
-                    initial={{ scale: 0 }}
-                    animate={isInView ? { scale: 1 } : {}}
-                    transition={{ delay: 0.6 + i * 0.2, type: "spring", stiffness: 400, damping: 15 }}
+                    variants={badgeVariants}
                     className={`absolute -top-2 -right-2 w-7 h-7 rounded-full ${color.accent} text-white text-xs font-bold flex items-center justify-center shadow-lg`}
                   >
                     {step.number}
@@ -87,7 +115,7 @@ export function HowItWorks() {
               </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </Section>
   );
