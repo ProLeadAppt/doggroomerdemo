@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { MapPin, Phone, Mail, Clock, Car, Check } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Car, Check, AlertCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import { PageHero } from "../sections/PageHero";
 import { Section } from "../layout/Section";
@@ -13,6 +13,36 @@ import { brand } from "../../data/site";
 
 export function ContactPageContent() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [dogInfo, setDogInfo] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitting(true);
+    setError("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, phone, email, dogInfo, message }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.error || "Something went wrong. Please try again.");
+        return;
+      }
+      setSubmitted(true);
+    } catch {
+      setError("Network error. Please check your connection and try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   return (
     <>
@@ -41,9 +71,9 @@ export function ContactPageContent() {
                 <div className="w-16 h-16 rounded-full bg-pw-sage/10 border border-pw-sage/30 flex items-center justify-center mx-auto mb-4">
                   <Check className="h-8 w-8 text-pw-sage" />
                 </div>
-                <h3 className="font-display text-xl font-bold text-pw-charcoal">
+                <p className="font-display text-xl font-bold text-pw-charcoal">
                   Message sent!
-                </h3>
+                </p>
                 <p className="mt-2 text-sm text-pw-muted">
                   Thanks for reaching out! We typically respond within a few hours during business hours.
                 </p>
@@ -53,27 +83,54 @@ export function ContactPageContent() {
                 <h2 className="font-display text-xl font-bold text-pw-charcoal mb-6">
                   Send us a message
                 </h2>
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    setSubmitted(true);
-                  }}
-                  className="space-y-4"
-                >
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <FormInput label="Your Name" placeholder="e.g. Sarah Mitchell" required />
-                    <FormInput label="Phone" type="tel" placeholder="e.g. 0412 345 678" required />
+                {error && (
+                  <div className="mb-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 flex items-start gap-2">
+                    <AlertCircle className="h-4 w-4 mt-0.5 flex-shrink-0" />
+                    {error}
                   </div>
-                  <FormInput label="Email" type="email" placeholder="e.g. sarah@email.com" required />
-                  <FormInput label="Dog's Name & Breed" placeholder="e.g. Luna, Cavoodle" />
+                )}
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <FormInput
+                      label="Your Name"
+                      placeholder="e.g. Sarah Mitchell"
+                      required
+                      value={name}
+                      onChange={(e) => setName((e.target as HTMLInputElement).value)}
+                    />
+                    <FormInput
+                      label="Phone"
+                      type="tel"
+                      placeholder="e.g. 0412 345 678"
+                      required
+                      value={phone}
+                      onChange={(e) => setPhone((e.target as HTMLInputElement).value)}
+                    />
+                  </div>
+                  <FormInput
+                    label="Email"
+                    type="email"
+                    placeholder="e.g. sarah@email.com"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail((e.target as HTMLInputElement).value)}
+                  />
+                  <FormInput
+                    label="Dog's Name & Breed"
+                    placeholder="e.g. Luna, Cavoodle"
+                    value={dogInfo}
+                    onChange={(e) => setDogInfo((e.target as HTMLInputElement).value)}
+                  />
                   <FormInput
                     as="textarea"
                     label="Message"
                     placeholder="How can we help?"
                     required
+                    value={message}
+                    onChange={(e) => setMessage((e.target as HTMLTextAreaElement).value)}
                   />
-                  <Button type="submit" fullWidth>
-                    Send Message
+                  <Button type="submit" fullWidth disabled={submitting}>
+                    {submitting ? "Sending..." : "Send Message"}
                   </Button>
                 </form>
               </div>
@@ -87,11 +144,12 @@ export function ContactPageContent() {
               <div className="rounded-2xl overflow-hidden border border-pw-border h-[300px] relative group">
                 <iframe
                   src={brand.googleMapsUrl}
-                  className="w-full h-full border-0 grayscale group-hover:grayscale-0 transition-all duration-700"
+                  className="w-full h-full border-0 grayscale group-hover:grayscale-0 transition-[filter] duration-700"
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   title="Pawsome & Co. location"
+                  aria-label="Google Maps showing Pawsome & Co. location in Balmain"
                 />
               </div>
 

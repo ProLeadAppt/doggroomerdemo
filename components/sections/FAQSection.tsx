@@ -31,7 +31,9 @@ export function FAQSection() {
             <div className="border-b border-pw-border last:border-b-0">
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full flex items-center justify-between py-5 text-left group"
+                className="w-full flex items-center justify-between py-5 text-left group focus-visible:ring-2 focus-visible:ring-pw-terracotta focus-visible:ring-offset-2 focus-visible:outline-none rounded-lg"
+                aria-expanded={openIndex === i}
+                aria-controls={`faq-answer-${i}`}
               >
                 <span className="font-display text-base font-semibold text-pw-charcoal group-hover:text-pw-teal transition-colors pr-4">
                   {item.question}
@@ -48,6 +50,8 @@ export function FAQSection() {
               <AnimatePresence>
                 {openIndex === i && (
                   <motion.div
+                    id={`faq-answer-${i}`}
+                    role="region"
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}

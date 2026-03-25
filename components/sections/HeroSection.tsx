@@ -57,6 +57,7 @@ export function HeroSection() {
         animate={{ opacity: 1 }}
         transition={{ delay: 2, duration: 1.5 }}
         className="absolute right-[10%] top-[20%] z-[2] hidden lg:block"
+        aria-hidden="true"
       >
         <motion.div
           animate={{ y: [0, -12, 0], rotate: [0, 5, 0] }}
@@ -71,6 +72,7 @@ export function HeroSection() {
         animate={{ opacity: 1 }}
         transition={{ delay: 2.5, duration: 1.5 }}
         className="absolute left-[5%] bottom-[25%] z-[2] hidden lg:block"
+        aria-hidden="true"
       >
         <motion.div
           animate={{ y: [0, 10, 0], rotate: [0, -8, 0] }}
@@ -144,7 +146,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.4, duration: 0.6 }}
-              className="mt-5 text-lg text-white/75 leading-relaxed max-w-lg"
+              className="mt-5 text-lg text-white/85 leading-relaxed max-w-lg"
             >
               {hero.subheadline}
             </motion.p>
@@ -158,7 +160,7 @@ export function HeroSection() {
             >
               <Link
                 href="/booking"
-                className="relative inline-flex items-center justify-center rounded-full px-8 py-4 text-sm font-semibold text-white overflow-hidden transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] group"
+                className="relative inline-flex items-center justify-center rounded-full px-8 py-4 text-sm font-semibold text-white overflow-hidden transition-[transform,background-color,border-color] duration-300 hover:scale-[1.03] active:scale-[0.97] group"
               >
                 {/* Gradient background */}
                 <span className="absolute inset-0 bg-gradient-to-r from-pw-terracotta to-pw-terracotta-600 transition-opacity duration-300" />
@@ -169,7 +171,7 @@ export function HeroSection() {
 
               <Link
                 href={`tel:${brand.phone.replace(/\s/g, "")}`}
-                className="inline-flex items-center justify-center rounded-full px-8 py-4 text-sm font-semibold text-white border border-white/20 bg-white/[0.06] backdrop-blur-sm hover:bg-white/[0.12] hover:border-white/30 transition-all duration-300"
+                className="inline-flex items-center justify-center rounded-full px-8 py-4 text-sm font-semibold text-white border border-white/20 bg-white/[0.06] backdrop-blur-sm hover:bg-white/[0.12] hover:border-white/30 transition-[transform,background-color,border-color] duration-300"
               >
                 <Phone className="mr-2 h-4 w-4" />
                 {hero.secondaryCtaLabel}
@@ -182,7 +184,7 @@ export function HeroSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.8, duration: 0.8 }}
-            className="mt-6 text-xs tracking-[0.15em] uppercase text-white/40 pl-2"
+            className="mt-6 text-xs tracking-[0.15em] uppercase text-white/70 pl-2"
           >
             {hero.trustLine}
           </motion.p>
@@ -195,6 +197,7 @@ export function HeroSection() {
         animate={{ opacity: 1 }}
         transition={{ delay: 2.5, duration: 1 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
+        aria-hidden="true"
       >
         <span className="text-[9px] tracking-[0.3em] uppercase text-white/30">
           Scroll

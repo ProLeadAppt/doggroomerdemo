@@ -7,13 +7,20 @@ export const metadata: Metadata = {
   title: "Contact Us",
   description:
     "Get in touch with Pawsome & Co. Visit us at 12 Darling Street, Balmain NSW 2041. Call (02) 8912 3456 or send us a message.",
+  openGraph: {
+    title: "Contact Us | Pawsome & Co.",
+    description:
+      "Get in touch with Pawsome & Co. Visit us at 12 Darling Street, Balmain NSW 2041. Call (02) 8912 3456 or send us a message.",
+    url: "https://doggroomer.netlify.app/contact",
+    siteName: "Pawsome & Co.",
+  },
 };
 
 export default function ContactPage() {
   return (
     <div className="flex min-h-screen flex-col bg-pw-cream text-pw-charcoal">
       <SiteHeader />
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         <ContactPageContent />
       </main>
       <SiteFooter />

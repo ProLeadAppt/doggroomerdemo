@@ -7,13 +7,20 @@ export const metadata: Metadata = {
   title: "Blog",
   description:
     "Grooming tips, breed guides, and expert advice from Balmain's favourite dog groomers.",
+  openGraph: {
+    title: "Blog | Pawsome & Co.",
+    description:
+      "Grooming tips, breed guides, and expert advice from Balmain's favourite dog groomers.",
+    url: "https://doggroomer.netlify.app/blog",
+    siteName: "Pawsome & Co.",
+  },
 };
 
 export default function BlogPage() {
   return (
     <div className="flex min-h-screen flex-col bg-pw-cream text-pw-charcoal">
       <SiteHeader />
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         <BlogListContent />
       </main>
       <SiteFooter />

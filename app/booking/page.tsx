@@ -7,13 +7,20 @@ export const metadata: Metadata = {
   title: "Book a Groom",
   description:
     "Book your dog's next grooming appointment online. Select a service, pick a time, and we'll take care of the rest.",
+  openGraph: {
+    title: "Book a Groom | Pawsome & Co.",
+    description:
+      "Book your dog's next grooming appointment online. Select a service, pick a time, and we'll take care of the rest.",
+    url: "https://doggroomer.netlify.app/booking",
+    siteName: "Pawsome & Co.",
+  },
 };
 
 export default function BookingPage() {
   return (
     <div className="flex min-h-screen flex-col bg-pw-cream text-pw-charcoal">
       <SiteHeader />
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         <BookingPageContent />
       </main>
       <SiteFooter />

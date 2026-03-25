@@ -92,7 +92,7 @@ export function TestimonialsSection() {
         >
           {reviews.map((review) => (
             <SwiperSlide key={review.id}>
-              <div className="rounded-2xl border border-pw-border bg-white p-6 hover:shadow-pw-lg hover:border-pw-amber/20 transition-all duration-500 h-full flex flex-col relative overflow-hidden group">
+              <div className="rounded-2xl border border-pw-border bg-white p-6 hover:shadow-pw-lg hover:border-pw-amber/20 transition-[box-shadow,border-color] duration-500 h-full flex flex-col relative overflow-hidden group">
                 {/* Decorative quote mark */}
                 <span className="absolute top-3 right-4 font-display text-6xl leading-none text-pw-sage/[0.06] pointer-events-none select-none">
                   &ldquo;
@@ -131,14 +131,14 @@ export function TestimonialsSection() {
         <div className="flex justify-center gap-3 mt-8">
           <button
             onClick={() => swiperRef.current?.slidePrev()}
-            className="w-10 h-10 rounded-full border border-pw-border bg-white hover:bg-pw-elevated hover:border-pw-sage/30 transition-all flex items-center justify-center"
+            className="w-11 h-11 rounded-full border border-pw-border bg-white hover:bg-pw-elevated hover:border-pw-sage/30 transition-[background-color,border-color] flex items-center justify-center"
             aria-label="Previous review"
           >
             <ArrowLeft className="h-4 w-4 text-pw-muted" />
           </button>
           <button
             onClick={() => swiperRef.current?.slideNext()}
-            className="w-10 h-10 rounded-full border border-pw-border bg-white hover:bg-pw-elevated hover:border-pw-sage/30 transition-all flex items-center justify-center"
+            className="w-11 h-11 rounded-full border border-pw-border bg-white hover:bg-pw-elevated hover:border-pw-sage/30 transition-[background-color,border-color] flex items-center justify-center"
             aria-label="Next review"
           >
             <ArrowRight className="h-4 w-4 text-pw-muted" />

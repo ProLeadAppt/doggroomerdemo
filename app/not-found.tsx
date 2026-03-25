@@ -8,7 +8,7 @@ export default function NotFound() {
   return (
     <div className="flex min-h-screen flex-col bg-pw-cream text-pw-charcoal">
       <SiteHeader />
-      <main className="flex-1 flex items-center justify-center px-6">
+      <main id="main-content" className="flex-1 flex items-center justify-center px-6">
         <div className="text-center max-w-md">
           <PawPrint className="h-16 w-16 text-pw-sage/30 mx-auto mb-6" />
           <h1 className="font-display text-display-xl text-pw-charcoal">

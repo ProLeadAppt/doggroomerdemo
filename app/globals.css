@@ -219,3 +219,60 @@ body {
   );
   animation: stripe-shift 3s linear infinite;
 }
+
+/* ─── Custom scrollbar ─── */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #8a9a7b #f5f0e8;
+}
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f5f0e8;
+}
+::-webkit-scrollbar-thumb {
+  background: #8a9a7b;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #6b9360;
+}
+
+/* ─── Hero text shadow ─── */
+.hero-text-shadow {
+  text-shadow: 0 2px 4px rgba(45, 41, 38, 0.08);
+}
+
+/* ─── Section background fade utilities ─── */
+.section-fade-cream {
+  background: linear-gradient(180deg, transparent 0%, #fdf6ec 100%);
+}
+.section-fade-white {
+  background: linear-gradient(180deg, transparent 0%, #ffffff 100%);
+}
+
+/* ─── Reduced motion preference ─── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html, body {
+    scroll-behavior: auto;
+  }
+
+  .text-shimmer {
+    animation: none;
+    background-size: 100% auto;
+  }
+
+  .paw-stripe-animated {
+    animation: none;
+  }
+}

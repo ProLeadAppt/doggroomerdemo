@@ -33,14 +33,14 @@ export function ServicesOverview() {
         {/* Hero service — full width featured card */}
         <FadeInSection>
           <Link href="/booking" className="block group">
-            <div className="relative overflow-hidden rounded-2xl border border-pw-border bg-white hover:border-pw-terracotta/30 transition-all duration-500 hover:shadow-pw-xl">
+            <div className="relative overflow-hidden rounded-2xl border border-pw-border bg-white hover:border-pw-terracotta/30 transition-[box-shadow,border-color] duration-500 hover:shadow-pw-xl">
               <div className="grid md:grid-cols-2">
                 <div className="relative h-64 md:h-auto overflow-hidden">
                   <Image
                     src={heroService.image}
                     alt={heroService.name}
                     fill
-                    className="object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                    className="object-cover grayscale-[20%] group-hover:grayscale-0 transition-[filter,transform] duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent to-white/20 md:bg-gradient-to-r md:from-transparent md:to-white" />
                 </div>
@@ -68,7 +68,7 @@ export function ServicesOverview() {
                       {heroService.duration}
                     </span>
                   </div>
-                  <div className="mt-5 flex items-center gap-1 text-sm font-semibold text-pw-terracotta group-hover:gap-2 transition-all">
+                  <div className="mt-5 flex items-center gap-1 text-sm font-semibold text-pw-terracotta group-hover:gap-2 transition-[gap,color]">
                     Book this service
                     <ArrowRight className="h-4 w-4" />
                   </div>
@@ -83,14 +83,14 @@ export function ServicesOverview() {
           {rest.map((service, i) => (
             <FadeInSection key={service.id} delay={i * 0.06}>
               <Link href="/booking" className="block group h-full">
-                <div className="relative overflow-hidden rounded-2xl border border-pw-border bg-white transition-all duration-500 hover:shadow-pw-lg hover:border-pw-sage/30 h-full flex flex-col">
+                <div className="relative overflow-hidden rounded-2xl border border-pw-border bg-white transition-[box-shadow,border-color] duration-500 hover:shadow-pw-lg hover:border-pw-sage/30 h-full flex flex-col">
                   {/* Image with desaturate → saturate */}
                   <div className="relative h-44 overflow-hidden">
                     <Image
                       src={service.image}
                       alt={service.name}
                       fill
-                      className="object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                      className="object-cover grayscale-[30%] group-hover:grayscale-0 transition-[filter,transform] duration-700 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent" />
                     {service.popular && (
@@ -120,7 +120,7 @@ export function ServicesOverview() {
                           {service.duration}
                         </span>
                       </div>
-                      <span className="text-xs font-semibold text-pw-terracotta flex items-center gap-1 group-hover:gap-2 transition-all">
+                      <span className="text-xs font-semibold text-pw-terracotta flex items-center gap-1 group-hover:gap-2 transition-[gap,color]">
                         Book
                         <ArrowRight className="h-3 w-3" />
                       </span>
