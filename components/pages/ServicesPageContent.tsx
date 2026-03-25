@@ -37,7 +37,7 @@ export function ServicesPageContent() {
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service, i) => (
             <FadeInSection key={service.id} delay={i * 0.06}>
-              <div className="group rounded-2xl border border-pw-border bg-white overflow-hidden hover:shadow-pw-lg transition-all duration-300 h-full flex flex-col">
+              <div className="group rounded-2xl border border-pw-border bg-white overflow-hidden hover:shadow-pw-lg transition-shadow duration-300 h-full flex flex-col">
                 <div className="relative h-44 overflow-hidden">
                   <Image
                     src={service.image}
@@ -139,7 +139,7 @@ export function ServicesPageContent() {
           {packages.map((pkg, i) => (
             <FadeInSection key={pkg.id} delay={i * 0.1}>
               <div
-                className={`relative rounded-2xl border bg-white p-7 h-full flex flex-col transition-all duration-300 ${
+                className={`relative rounded-2xl border bg-white p-7 h-full flex flex-col transition-[box-shadow,border-color] duration-300 ${
                   pkg.popular
                     ? "border-pw-terracotta shadow-pw-lg scale-[1.02]"
                     : "border-pw-border hover:shadow-pw"

@@ -29,7 +29,7 @@ export function BlogListContent() {
           {blogPosts.map((post, i) => (
             <FadeInSection key={post.slug} delay={i * 0.08}>
               <Link href={`/blog/${post.slug}`} className="group block">
-                <article className="rounded-2xl border border-pw-border bg-white overflow-hidden hover:shadow-pw-lg transition-all duration-300 h-full flex flex-col">
+                <article className="rounded-2xl border border-pw-border bg-white overflow-hidden hover:shadow-pw-lg transition-shadow duration-300 h-full flex flex-col">
                   <div className="relative h-52 overflow-hidden">
                     <Image
                       src={post.image}
@@ -59,7 +59,7 @@ export function BlogListContent() {
                           {post.readTime}
                         </span>
                       </div>
-                      <span className="text-xs font-semibold text-pw-terracotta flex items-center gap-1 group-hover:gap-2 transition-all">
+                      <span className="text-xs font-semibold text-pw-terracotta flex items-center gap-1 group-hover:gap-2 transition-[gap,color]">
                         Read
                         <ArrowRight className="h-3 w-3" />
                       </span>

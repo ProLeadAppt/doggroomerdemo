@@ -7,6 +7,13 @@ export const metadata: Metadata = {
   title: "Blog",
   description:
     "Grooming tips, breed guides, and expert advice from Balmain's favourite dog groomers.",
+  openGraph: {
+    title: "Blog | Pawsome & Co.",
+    description:
+      "Grooming tips, breed guides, and expert advice from Balmain's favourite dog groomers.",
+    url: "https://doggroomer.netlify.app/blog",
+    siteName: "Pawsome & Co.",
+  },
 };
 
 export default function BlogPage() {

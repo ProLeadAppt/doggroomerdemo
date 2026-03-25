@@ -7,6 +7,13 @@ export const metadata: Metadata = {
   title: "Reviews",
   description:
     "Rated 4.9 stars with 127+ Google reviews. See what dog owners in Balmain say about Pawsome & Co.",
+  openGraph: {
+    title: "Reviews | Pawsome & Co.",
+    description:
+      "Rated 4.9 stars with 127+ Google reviews. See what dog owners in Balmain say about Pawsome & Co.",
+    url: "https://doggroomer.netlify.app/reviews",
+    siteName: "Pawsome & Co.",
+  },
 };
 
 export default function ReviewsPage() {

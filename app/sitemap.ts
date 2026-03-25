@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { getAllSlugs } from "@/lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://pawsomeandco.com.au";
+  const baseUrl = "https://doggroomer.netlify.app";
 
   const staticPages = [
     "",

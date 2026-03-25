@@ -40,7 +40,7 @@ export const brand: Brand = {
   googleRating: 4.9,
   reviewCount: 127,
   googleMapsUrl:
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.9!2d151.1793!3d-33.8567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12afb3!2sBalmain%20NSW!5e0!3m2!1sen!2sau!4v1234567890",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1656.2!2d151.17846!3d-33.85723!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12afb33e3e1f0d%3A0x0!2s12%20Darling%20St%2C%20Balmain%20NSW%202041!5e0!3m2!1sen!2sau!4v1711234567890",
   socials: {
     instagram: "https://www.instagram.com/pawsomeandco",
     facebook: "https://www.facebook.com/pawsomeandco",

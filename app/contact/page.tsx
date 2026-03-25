@@ -7,6 +7,13 @@ export const metadata: Metadata = {
   title: "Contact Us",
   description:
     "Get in touch with Pawsome & Co. Visit us at 12 Darling Street, Balmain NSW 2041. Call (02) 8912 3456 or send us a message.",
+  openGraph: {
+    title: "Contact Us | Pawsome & Co.",
+    description:
+      "Get in touch with Pawsome & Co. Visit us at 12 Darling Street, Balmain NSW 2041. Call (02) 8912 3456 or send us a message.",
+    url: "https://doggroomer.netlify.app/contact",
+    siteName: "Pawsome & Co.",
+  },
 };
 
 export default function ContactPage() {

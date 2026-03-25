@@ -4,11 +4,11 @@ export function getLocalBusinessSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "https://pawsomeandco.com.au",
+    "@id": "https://doggroomer.netlify.app",
     name: brand.name,
     description:
       "Premium dog grooming studio in Balmain, Sydney. Expert grooming for all breeds with gentle care and tail-wagging results.",
-    url: "https://pawsomeandco.com.au",
+    url: "https://doggroomer.netlify.app",
     telephone: brand.phone,
     email: brand.email,
     address: {
@@ -98,6 +98,7 @@ export function getArticleSchema(article: {
         url: "https://doggroomer.netlify.app/favicon.svg",
       },
     },
+    dateModified: article.date,
   };
 }
 

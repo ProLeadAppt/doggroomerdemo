@@ -43,7 +43,7 @@ export function GalleryPageContent() {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`rounded-full px-5 py-2 text-sm font-medium transition-all duration-300 ${
+              className={`rounded-full px-5 py-2 text-sm font-medium transition-[color,background-color] duration-300 focus-visible:ring-2 focus-visible:ring-pw-terracotta focus-visible:ring-offset-2 focus-visible:outline-none ${
                 activeCategory === cat
                   ? "bg-pw-teal text-white shadow-glow-sage"
                   : "bg-white border border-pw-border text-pw-muted hover:text-pw-charcoal hover:border-pw-sage/30"
@@ -68,8 +68,12 @@ export function GalleryPageContent() {
                 className="break-inside-avoid"
               >
                 <div
-                  className="group relative overflow-hidden rounded-2xl cursor-pointer"
+                  className="group relative overflow-hidden rounded-2xl cursor-pointer focus-visible:ring-2 focus-visible:ring-pw-terracotta focus-visible:ring-offset-2 focus-visible:outline-none"
                   onClick={() => setLightboxIndex(i)}
+                  onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setLightboxIndex(i); } }}
+                  tabIndex={0}
+                  role="button"
+                  aria-label={`View ${item.label}`}
                 >
                   <Image
                     src={item.image}
@@ -80,7 +84,7 @@ export function GalleryPageContent() {
                     className="w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-pw-charcoal/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                  <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-[opacity,transform] duration-500">
                     <p className="font-display font-bold text-white">
                       {item.label}
                     </p>

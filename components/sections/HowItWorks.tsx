@@ -94,7 +94,7 @@ export function HowItWorks() {
                 className="relative text-center group"
               >
                 {/* Step circle with gradient fill */}
-                <div className={`relative mx-auto w-20 h-20 rounded-2xl ${color.bg} border ${color.border} flex items-center justify-center transition-all duration-500 ${color.glow} group-hover:scale-110`}>
+                <div className={`relative mx-auto w-20 h-20 rounded-2xl ${color.bg} border ${color.border} flex items-center justify-center transition-transform duration-500 ${color.glow} group-hover:scale-110`}>
                   <Icon className={`h-8 w-8 ${color.text} transition-transform duration-300 group-hover:scale-110`} />
 
                   {/* Step number badge */}
