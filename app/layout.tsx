@@ -91,14 +91,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <link
-          rel="preload"
-          as="image"
-          href="/images/hero/golden-retriever-grooming.jpg"
-          fetchPriority="high"
-        />
-      </head>
+      <head />
       <body
         className={`${displayFont.variable} ${bodyFont.variable} ${scriptFont.variable} min-h-screen bg-pw-cream text-pw-charcoal antialiased font-body relative overflow-x-hidden`}
       >

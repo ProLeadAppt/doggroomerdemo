@@ -74,13 +74,14 @@ export function HeroSection() {
             className="hero-scale-in relative w-full aspect-[3/4] sm:aspect-[4/5] lg:aspect-[3/4] rounded-3xl overflow-hidden shadow-pw-xl"
           >
             <Image
-              src={hero.image}
+              src="/images/hero/golden-retriever-grooming.webp"
               alt="Professional dog grooming at Pawsome and Co studio in Balmain Sydney"
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
               className="object-cover"
               priority
               fetchPriority="high"
+              unoptimized
             />
             {/* Subtle bottom gradient overlay */}
             <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
