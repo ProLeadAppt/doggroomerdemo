@@ -1,17 +1,20 @@
 "use client";
 
 import { Clock, Phone, MapPin, Star } from "lucide-react";
-import { brand } from "../../data/site";
+import { brand as defaultBrand } from "../../data/site";
+import { useDemoContext } from "../../contexts/DemoContext";
 import { FadeInSection } from "../motion/FadeInSection";
 
-const items = [
-  { icon: Star, label: `${brand.googleRating} Google Rating \u00b7 ${brand.reviewCount}+ Reviews` },
-  { icon: Clock, label: `Open 6 days \u00b7 ${brand.hoursSummary}` },
-  { icon: Phone, label: brand.phone },
-  { icon: MapPin, label: `${brand.suburb} \u00b7 Free street parking` },
-];
-
 export function QuickInfoStrip() {
+  const { brand } = useDemoContext ? useDemoContext() : { brand: defaultBrand };
+
+  const items = [
+    { icon: Star, label: `${brand.googleRating} Google Rating · ${brand.reviewCount}+ Reviews` },
+    { icon: Clock, label: `Open 6 days · ${brand.hoursSummary}` },
+    { icon: Phone, label: brand.phone },
+    { icon: MapPin, label: `${brand.suburb} · Free street parking` },
+  ];
+
   return (
     <div className="bg-pw-teal">
       <div className="mx-auto max-w-pw-container px-4 sm:px-6 py-3 sm:py-4">

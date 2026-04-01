@@ -6,7 +6,8 @@ import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { PawPrint } from "lucide-react";
 import { Button } from "../ui/Button";
 import { MagneticButton } from "../motion/MagneticButton";
-import { navLinks } from "../../data/site";
+import { navLinks, brand as defaultBrand } from "../../data/site";
+import { useDemoContext } from "../../contexts/DemoContext";
 
 const mobileMenuVariants = {
   hidden: { opacity: 0 },
@@ -23,6 +24,7 @@ const mobileItemVariants = {
 };
 
 export function SiteHeader() {
+  const { brand } = useDemoContext ? useDemoContext() : { brand: defaultBrand };
   const [scrolled, setScrolled] = useState(false);
   const [ctaFilled, setCtaFilled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -61,10 +63,10 @@ export function SiteHeader() {
             </div>
             <div className="flex flex-col">
               <span className="font-display text-lg font-bold tracking-wide text-pw-charcoal transition-colors group-hover:text-pw-teal">
-                Pawsome & Co.
+                {brand.name}
               </span>
               <span className="font-script text-[11px] text-pw-terracotta -mt-0.5">
-                Where every dog leaves happy.
+                {brand.tagline}
               </span>
             </div>
           </Link>

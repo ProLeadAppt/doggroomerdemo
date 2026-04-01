@@ -8,7 +8,8 @@ import { Section } from "../layout/Section";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Button } from "../ui/Button";
 import { FadeInSection } from "../motion/FadeInSection";
-import { reviews, brand } from "../../data/site";
+import { reviews as defaultReviews, brand as defaultBrand } from "../../data/site";
+import { useDemoContext } from "../../contexts/DemoContext";
 
 /* ---------- Star rating ---------- */
 function StarRating({ count }: { count: number }) {
@@ -40,6 +41,7 @@ const cardSpring = { type: "spring" as const, stiffness: 260, damping: 28 };
 
 /* ---------- Main component ---------- */
 export function TestimonialsSection() {
+  const { brand, reviews } = useDemoContext ? useDemoContext() : { brand: defaultBrand, reviews: defaultReviews };
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
   const [direction, setDirection] = useState(0);

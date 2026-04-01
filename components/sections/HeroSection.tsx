@@ -1,11 +1,27 @@
-import Link from "next/link";
+"use client";
 import Image from "next/image";
+import Link from "next/link";
 import { Phone } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { hero, brand } from "@/data/site";
+import { hero as defaultHero, brand as defaultBrand } from "@/data/site";
+import { useDemoContext } from "@/contexts/DemoContext";
 
 export function HeroSection() {
+  const { brand, isDemo } = useDemoContext ? useDemoContext() : { brand: defaultBrand, isDemo: false };
+  
+  // Build dynamic hero data from brand when in demo mode
+  const hero = isDemo ? {
+    ...defaultHero,
+    headline: `${brand.suburb}'s Most-Loved Dog Grooming Studio`,
+    subheadline: `Professional grooming, gentle care, and tail-wagging results — trusted by ${brand.reviewCount}+ dog owners. ${brand.address}`,
+    trustLine: `★ ${brand.googleRating} Google Rating · ${brand.reviewCount}+ Reviews · ${brand.suburb}`,
+    ctaSecondary: { label: `Call ${brand.phone}`, href: `tel:${brand.phone?.replace(/\s/g, "")}` },
+    cta: defaultHero.cta,
+    tagline: defaultHero.tagline,
+    image: defaultHero.image,
+  } : defaultHero;
+
   return (
     <section
       className="relative min-h-[90vh] flex items-center overflow-hidden"

@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
-import { SiteHeader } from "@/components/layout/SiteHeader";
-import { SiteFooter } from "@/components/layout/SiteFooter";
-import { SchemaScript } from "@/components/seo/SchemaScript";
-import { getLocalBusinessSchema, getFAQSchema } from "@/lib/schema";
-import { DemoDataProvider } from "@/components/demo/DemoDataProvider";
+import { DemoProvider } from "@/contexts/DemoContext";
 
 // Eagerly loaded (above fold — critical path)
+import { SiteHeader } from "@/components/layout/SiteHeader";
+import { SiteFooter } from "@/components/layout/SiteFooter";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { TrustBar } from "@/components/sections/TrustBar";
 
@@ -69,41 +67,43 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function DemoPage({ params }: Props) {
   const { slug } = await params;
 
+  // Don't render demo page for static routes
+  if (STATIC_ROUTES.has(slug)) {
+    return null;
+  }
+
   return (
-    <div className="flex min-h-screen flex-col bg-pw-cream text-pw-charcoal">
-      {/* Inject the DemoDataProvider to override placeholder data */}
-      <DemoDataProvider slug={slug} />
+    <DemoProvider slug={slug}>
+      <div className="flex min-h-screen flex-col bg-pw-cream text-pw-charcoal">
+        <SiteHeader />
+        <main id="main-content" className="flex-1">
+          <HeroSection />
+          <OfferBanner />
+          <QuickInfoStrip />
+          <TrustBar />
+          <WhyPawsome />
+          <ServicesOverview />
 
-      <SchemaScript schema={getLocalBusinessSchema()} />
-      <SchemaScript schema={getFAQSchema()} />
-      <SiteHeader />
-      <main id="main-content" className="flex-1">
-        <HeroSection />
-        <OfferBanner />
-        <QuickInfoStrip />
-        <TrustBar />
-        <WhyPawsome />
-        <ServicesOverview />
+          <ScrollVelocity
+            text="HAPPY PUPS &bull; FRESH GROOMS &bull; "
+            baseVelocity={-2}
+          />
 
-        <ScrollVelocity
-          text="HAPPY PUPS &bull; FRESH GROOMS &bull; "
-          baseVelocity={-2}
-        />
+          <HowItWorks />
+          <BeforeAfterGallery />
 
-        <HowItWorks />
-        <BeforeAfterGallery />
+          <ScrollVelocity
+            text="TAIL WAGS &bull; PAWSOME RESULTS &bull; "
+            baseVelocity={2}
+          />
 
-        <ScrollVelocity
-          text="TAIL WAGS &bull; PAWSOME RESULTS &bull; "
-          baseVelocity={2}
-        />
-
-        <TestimonialsSection />
-        <MeetTheTeam />
-        <FAQSection />
-        <FinalCTA />
-      </main>
-      <SiteFooter />
-    </div>
+          <TestimonialsSection />
+          <MeetTheTeam />
+          <FAQSection />
+          <FinalCTA />
+        </main>
+        <SiteFooter />
+      </div>
+    </DemoProvider>
   );
 }

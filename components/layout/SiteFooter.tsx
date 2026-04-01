@@ -13,9 +13,11 @@ import {
   Star,
   Send,
 } from "lucide-react";
-import { brand, navLinks } from "../../data/site";
+import { brand as defaultBrand, navLinks } from "../../data/site";
+import { useDemoContext } from "../../contexts/DemoContext";
 
 export function SiteFooter() {
+  const { brand } = useDemoContext ? useDemoContext() : { brand: defaultBrand };
   const year = new Date().getFullYear();
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [emailSubmitted, setEmailSubmitted] = useState(false);
